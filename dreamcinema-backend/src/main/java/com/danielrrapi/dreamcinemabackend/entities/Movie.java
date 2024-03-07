@@ -27,6 +27,7 @@ public class Movie {
 
     private String posterUrl;
 
+    @Enumerated(EnumType.STRING)
     private MovieGenre[] genres;
 
     @Column(name = "screening_dates")

@@ -28,6 +28,7 @@ public class User {
     private LocalDate dob;
 
     @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
     public User(String name, String surname, LocalDate dob) {
