@@ -1,5 +1,6 @@
 package com.danielrrapi.dreamcinemabackend.payloads;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
@@ -15,6 +16,7 @@ public record NewUserDTO(
         @NotBlank
         String password,
         @NotBlank
+        @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
         LocalDate dob
 
 ) {

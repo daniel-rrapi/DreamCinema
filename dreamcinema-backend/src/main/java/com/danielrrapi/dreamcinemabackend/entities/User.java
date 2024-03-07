@@ -1,6 +1,7 @@
 package com.danielrrapi.dreamcinemabackend.entities;
 
 import com.danielrrapi.dreamcinemabackend.enums.RoleType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class User implements UserDetails {
     private String email;
 
     private String password;
+
 
     private LocalDate dob;
 
