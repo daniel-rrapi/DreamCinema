@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -21,9 +22,9 @@ public class MovieRoom {
 
     private String name;
 
-    private String[] seats;
+    private List<String> seats;
 
-    public MovieRoom(String name, String[] seats) {
+    public MovieRoom(String name, List<String> seats) {
         this.name = name;
         this.seats = seats;
     }

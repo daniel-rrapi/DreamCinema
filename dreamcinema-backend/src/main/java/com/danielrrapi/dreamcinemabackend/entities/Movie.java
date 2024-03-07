@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -25,13 +27,31 @@ public class Movie {
 
     private int year;
 
+    private String county;
+
+    private LocalTime duration;
+
+    @Column(name = "poster_url")
     private String posterUrl;
 
+    @Column(name = "banner_url")
+    private String bannerUrl;
+
     @Enumerated(EnumType.STRING)
-    private MovieGenre[] genres;
+    private List<MovieGenre> genres;
 
     @Column(name = "screening_dates")
-    private LocalDateTime[] screeningDates;
+    private List<LocalDateTime> screeningDates;
 
-
+    public Movie(String title, String description, int year, String county,  String posterUrl, String bannerUrl, List<MovieGenre> genres) {
+        this.title = title;
+        this.description = description;
+        this.year = year;
+        this.county = county;
+        this.duration = null;
+        this.posterUrl = posterUrl;
+        this.bannerUrl = bannerUrl;
+        this.genres = genres;
+        this.screeningDates = null;
+    }
 }
