@@ -28,7 +28,7 @@ public class JWTTools {
         try {
             Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parse(token);
         } catch (Exception e) {
-            throw new UnauthorizedException("The token is not valid, do the login again")
+            throw new UnauthorizedException("The token is not valid, do the login again");
         }
     }
 

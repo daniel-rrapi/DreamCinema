@@ -16,4 +16,8 @@ public class UserService {
     public User findById(UUID id) {
         return userDAO.findById(id).orElseThrow(() -> new NotFoundExcpetion("The user with id: " + id + " not found"));
     }
+
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email).orElseThrow(() -> new NotFoundExcpetion("User with email: "+ email + " not found"));
+    }
 }
