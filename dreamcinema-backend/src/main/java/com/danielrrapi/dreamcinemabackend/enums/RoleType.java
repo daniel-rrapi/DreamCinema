@@ -1,5 +1,5 @@
 package com.danielrrapi.dreamcinemabackend.enums;
 
-public enum UserRole {
+public enum RoleType {
     USER, ADMIN
 }
