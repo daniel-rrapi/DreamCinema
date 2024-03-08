@@ -27,4 +27,10 @@ public class Seat {
     @ManyToOne
     @JoinColumn(name = "projection_id")
     private Projection projectionId;
+
+    public Seat(int number, boolean isBooked, Projection projectionId) {
+        this.number = number;
+        this.isBooked = isBooked;
+        this.projectionId = projectionId;
+    }
 }
