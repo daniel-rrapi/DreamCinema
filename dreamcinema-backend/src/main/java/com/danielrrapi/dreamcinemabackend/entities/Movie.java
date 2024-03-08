@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
@@ -40,10 +39,8 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private List<MovieGenre> genres;
 
-    @Column(name = "screening_dates")
-    private List<LocalDateTime> screeningDates;
 
-    public Movie(String title, String description, int year, String county,  String posterUrl, String bannerUrl, List<MovieGenre> genres) {
+    public Movie(String title, String description, int year, String county,  String posterUrl, String bannerUrl) {
         this.title = title;
         this.description = description;
         this.year = year;
@@ -52,6 +49,5 @@ public class Movie {
         this.posterUrl = posterUrl;
         this.bannerUrl = bannerUrl;
         this.genres = genres;
-        this.screeningDates = null;
     }
 }

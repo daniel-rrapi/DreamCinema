@@ -1,11 +1,11 @@
 package com.danielrrapi.dreamcinemabackend.services;
 
-import com.danielrrapi.dreamcinemabackend.repositories.BookingDAO;
+import com.danielrrapi.dreamcinemabackend.repositories.TicketDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookingService {
+public class TicketService {
     @Autowired
-    private BookingDAO bookingDAO;
+    private TicketDAO bookingDAO;
 }

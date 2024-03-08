@@ -6,22 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "movie_rooms")
-public class MovieRoom {
+@Table(name = "days")
+public class Day {
     @Id
-    @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter(AccessLevel.NONE)
     private UUID id;
 
-    private String name;
+    private LocalDate date;
 
-    public MovieRoom(String name) {
-        this.name = name;
+    public Day(LocalDate date) {
+        this.date = date;
     }
 }

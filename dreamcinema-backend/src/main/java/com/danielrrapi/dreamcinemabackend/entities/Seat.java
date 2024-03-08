@@ -12,16 +12,19 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "movie_rooms")
-public class MovieRoom {
+@Table(name = "seats")
+public class Seat {
     @Id
-    @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter(AccessLevel.NONE)
     private UUID id;
 
-    private String name;
+    private int number;
 
-    public MovieRoom(String name) {
-        this.name = name;
-    }
+    @Column(name = "is_booked")
+    private boolean isBooked;
+
+    @ManyToOne
+    @JoinColumn(name = "projection_id")
+    private Projection projectionId;
 }
