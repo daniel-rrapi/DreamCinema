@@ -26,7 +26,7 @@ public class SeatController {
     }
 
     @PostMapping
-    public Seat saveDay(@RequestBody NewSeatDTO payload) {
+    public Seat saveSeat(@RequestBody NewSeatDTO payload) {
         return seatService.save(payload);
     }
 
