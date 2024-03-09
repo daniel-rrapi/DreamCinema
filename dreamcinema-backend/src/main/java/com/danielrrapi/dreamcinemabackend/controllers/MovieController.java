@@ -16,7 +16,12 @@ public class MovieController {
     public Page<Movie> getAllMovies(@RequestParam(defaultValue = "0") int pageNumber,
                                     @RequestParam(defaultValue = "10") int size,
                                     @RequestParam(defaultValue = "name") String orderBy) {
-        return movieService.getMovies(pageNumber, size, orderBy);
+        return movieService.findAllMovies(pageNumber, size, orderBy);
+    }
+
+    @GetMapping("/{id}")
+    public Movie getMovieById(@RequestParam String id) {
+        return movieService.findMovieById(id);
     }
 
     @PostMapping
