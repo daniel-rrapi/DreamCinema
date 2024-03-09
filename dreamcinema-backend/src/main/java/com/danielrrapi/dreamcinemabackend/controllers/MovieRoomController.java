@@ -20,7 +20,7 @@ public class MovieRoomController {
         return movieRoomService.findAllMovieRooms(pageNumber, size, orderBy);
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public MovieRoom getMovieRoomById(@RequestParam String id) {
         return movieRoomService.findMovieRoomById(id);
     }
@@ -30,7 +30,7 @@ public class MovieRoomController {
         return movieRoomService.save(payload);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public MovieRoom deleteById(@RequestParam String id) {
         return movieRoomService.deleteMovieRoomById(id);
     }

@@ -26,7 +26,7 @@ public class Movie {
 
     private int year;
 
-    private String county;
+    private String country;
 
     private LocalTime duration;
 
@@ -40,11 +40,11 @@ public class Movie {
     private List<MovieGenre> genres;
 
 
-    public Movie(String title, String description, int year, String county,  String posterUrl, String bannerUrl) {
+    public Movie(String title, String description, int year, String country,  String posterUrl, String bannerUrl, List<MovieGenre> genres) {
         this.title = title;
         this.description = description;
         this.year = year;
-        this.county = county;
+        this.country = country;
         this.duration = null;
         this.posterUrl = posterUrl;
         this.bannerUrl = bannerUrl;

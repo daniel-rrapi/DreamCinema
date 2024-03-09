@@ -1,0 +1,76 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+$green: #0e8784;
+$primary: $green;
+
+$light-green: #66d2cf;
+$secondary: $light-green;
+
+$navbar-light-color: white;
+$navbar-light-hover-color: rgb(233, 233, 233);
+$navbar-light-active-color: #fee505;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1500px,
+);
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25,
+  ),
+  //4px
+  2:
+    (
+      $spacer * 0.5,
+    ),
+  //8px
+  3: $spacer,
+  //16px
+  4:
+    (
+      $spacer * 1.5,
+    ),
+  //24px
+  5:
+    (
+      $spacer * 3,
+    ),
+  //48px
+  6:
+    (
+      $spacer * 4,
+    ),
+  //64px
+  7:
+    (
+      $spacer * 5,
+    ),
+  //80px
+  8:
+    (
+      $spacer * 6.25,
+    ),
+  //100px
+  9:
+    (
+      $spacer * 7.5,
+    ),
+  //120px
+  10:
+    (
+      $spacer * 9.375,
+    )
+    //150px,,,,,,,
+);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here

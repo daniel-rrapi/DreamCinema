@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
 @RequestMapping("/movies")
 public class MovieController {
     @Autowired
@@ -15,7 +16,7 @@ public class MovieController {
     @GetMapping
     public Page<Movie> getAllMovies(@RequestParam(defaultValue = "0") int pageNumber,
                                     @RequestParam(defaultValue = "10") int size,
-                                    @RequestParam(defaultValue = "name") String orderBy) {
+                                    @RequestParam(defaultValue = "title") String orderBy) {
         return movieService.findAllMovies(pageNumber, size, orderBy);
     }
 
