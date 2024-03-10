@@ -3,7 +3,8 @@
 
 // Include any default variable overrides here (though functions won't be available)
 $green: #0e8784;
-$primary: $green;
+$yellow: #fee505;
+$primary: $yellow;
 
 $light-green: #66d2cf;
 $secondary: $light-green;
@@ -68,7 +69,7 @@ $spacers: (
     (
       $spacer * 9.375,
     )
-    //150px,,,,,,,
+    //150px,,,,,,,,
 );
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";

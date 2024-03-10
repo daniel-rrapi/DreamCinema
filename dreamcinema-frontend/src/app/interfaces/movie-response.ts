@@ -1,5 +1,5 @@
 export interface MovieResponse {
-  content: Content[];
+  content: ContentMovie[];
   pageable: Pageable;
   totalPages: number;
   totalElements: number;
@@ -12,7 +12,7 @@ export interface MovieResponse {
   empty: boolean;
 }
 
-export interface Content {
+export interface ContentMovie {
   id: string;
   title: string;
   description: string;

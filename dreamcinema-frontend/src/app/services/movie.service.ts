@@ -9,7 +9,9 @@ export class MovieService {
   pageNum: number = 0;
 
   constructor(private http: HttpClient) {}
-  getFirstMovie() {
-    return this.http.get<MovieResponse>('http://localhost:8080/movies');
+  getMovies(size: number = 10) {
+    return this.http.get<MovieResponse>(
+      'http://localhost:8080/movies?size=' + size
+    );
   }
 }

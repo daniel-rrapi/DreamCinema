@@ -7,13 +7,21 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./hero-landingpage.component.scss'],
 })
 export class HeroLandingpageComponent implements OnInit {
-  bannerUrl: string = '';
+  bannerUrl: string = '../../../assets/imgs/black_background.png';
+  title: string = '';
+  genres: string[] = [];
+  year!: number;
+  time!: any;
+
   constructor(private movieSrv: MovieService) {}
 
   ngOnInit(): void {
-    this.movieSrv.getFirstMovie().subscribe((data) => {
+    this.movieSrv.getMovies().subscribe((data) => {
       this.bannerUrl = data.content[0].bannerUrl;
-      console.log(this.bannerUrl);
+      this.title = data.content[0].title;
+      this.genres = data.content[0].genres;
+      this.year = data.content[0].year;
+      this.time = data.content[0].duration;
     });
   }
 }

@@ -1,6 +1,7 @@
 package com.danielrrapi.dreamcinemabackend.entities;
 
 import com.danielrrapi.dreamcinemabackend.enums.MovieGenre;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,7 @@ public class Movie {
     private int year;
 
     private String country;
-
+    @JsonFormat(pattern = "H:mm", shape = JsonFormat.Shape.STRING)
     private LocalTime duration;
 
     @Column(name = "poster_url")
@@ -40,12 +41,12 @@ public class Movie {
     private List<MovieGenre> genres;
 
 
-    public Movie(String title, String description, int year, String country,  String posterUrl, String bannerUrl, List<MovieGenre> genres) {
+    public Movie(String title, String description, int year, String country, LocalTime duration, String posterUrl, String bannerUrl, List<MovieGenre> genres) {
         this.title = title;
         this.description = description;
         this.year = year;
         this.country = country;
-        this.duration = null;
+        this.duration = duration;
         this.posterUrl = posterUrl;
         this.bannerUrl = bannerUrl;
         this.genres = genres;
