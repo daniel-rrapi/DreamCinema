@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.UUID;
 
+@RestController
 @RequestMapping("/movies")
 public class MovieController {
     @Autowired
@@ -21,7 +22,7 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public Movie getMovieById(@RequestParam String id) {
+    public Movie getMovieById(@PathVariable String id) {
         return movieService.findMovieById(id);
     }
 

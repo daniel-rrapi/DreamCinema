@@ -12,6 +12,8 @@ export class HeroLandingpageComponent implements OnInit {
   genres: string[] = [];
   year!: number;
   time!: any;
+  id!: string;
+  link!: string;
 
   constructor(private movieSrv: MovieService) {}
 
@@ -22,6 +24,8 @@ export class HeroLandingpageComponent implements OnInit {
       this.genres = data.content[0].genres;
       this.year = data.content[0].year;
       this.time = data.content[0].duration;
+      this.id = data.content[0].id;
+      this.link = 'book/' + this.id;
     });
   }
 }

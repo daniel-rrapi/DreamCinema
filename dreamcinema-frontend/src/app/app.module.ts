@@ -11,6 +11,8 @@ import { HeroLandingpageComponent } from './components/hero-landingpage/hero-lan
 import { MoviesLandingpageComponent } from './components/movies-landingpage/movies-landingpage.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { HourFormatterPipe } from './pipes/hour-formatter.pipe';
+import { BookComponent } from './views/book/book.component';
+import { BannerBookComponent } from './components/banner-book/banner-book.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HourFormatterPipe } from './pipes/hour-formatter.pipe';
     MoviesLandingpageComponent,
     MovieCardComponent,
     HourFormatterPipe,
+    BookComponent,
+    BannerBookComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

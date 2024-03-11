@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieResponse } from '../interfaces/movie-response';
+import { ContentMovie, MovieResponse } from '../interfaces/movie-response';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,8 @@ export class MovieService {
     return this.http.get<MovieResponse>(
       'http://localhost:8080/movies?size=' + size
     );
+  }
+  getMovieById(id: string) {
+    return this.http.get<ContentMovie>('http://localhost:8080/movies/' + id);
   }
 }
