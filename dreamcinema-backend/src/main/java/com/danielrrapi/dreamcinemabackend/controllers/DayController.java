@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "/days")
+@RequestMapping("/days")
 public class DayController {
     @Autowired
     private DayService dayService;
@@ -16,22 +16,22 @@ public class DayController {
     @GetMapping
     public Page<Day> getAllDays(@RequestParam(defaultValue = "0") int pageNumber,
                                 @RequestParam(defaultValue = "10") int size,
-                                @RequestParam(defaultValue = "day") String orderBy) {
+                                @RequestParam(defaultValue = "date") String orderBy) {
         return dayService.getAllDays(pageNumber, size, orderBy);
     }
 
     @GetMapping("/{id}")
-    public Day getDayById(@RequestParam String id) {
+    public Day getDayById(@PathVariable String id) {
         return dayService.findDayById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public Day saveDay(@RequestBody NewDateDTO payload) {
         return dayService.save(payload);
     }
 
     @DeleteMapping("/{id}")
-    public Day removeDayById(@RequestParam String id) {
+    public Day removeDayById(@PathVariable String id) {
         return  dayService.deleteById(id);
     }
 

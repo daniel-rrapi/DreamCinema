@@ -4,6 +4,7 @@ import com.danielrrapi.dreamcinemabackend.entities.Projection;
 import com.danielrrapi.dreamcinemabackend.entities.ScreeningTime;
 import com.danielrrapi.dreamcinemabackend.entities.Seat;
 import com.danielrrapi.dreamcinemabackend.exceptions.NotFoundExcpetion;
+import com.danielrrapi.dreamcinemabackend.payloads.NewScreeningTimeDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewSeatDTO;
 import com.danielrrapi.dreamcinemabackend.repositories.ScreeningTimeDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class ScreeningTimeService {
         return screeningTimeDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("ScreeningTime with id: " + id + " not found"));
     }
 
-    public  ScreeningTime save(ScreeningTime screeningTime) {
-        return screeningTimeDAO.save(screeningTime);
+    public  ScreeningTime save(NewScreeningTimeDTO payload) {
+        return screeningTimeDAO.save(new ScreeningTime(payload.startTime()));
     }
 
     public ScreeningTime deleteById(String id) {

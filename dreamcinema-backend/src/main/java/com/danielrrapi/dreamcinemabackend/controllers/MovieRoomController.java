@@ -26,12 +26,12 @@ public class MovieRoomController {
     }
 
     @PostMapping
-    public MovieRoom saveMovieRoom(@RequestBody NewMovieRoomDTO payload) {
+    public MovieRoom saveMovieRoom(@PathVariable NewMovieRoomDTO payload) {
         return movieRoomService.save(payload);
     }
 
     @DeleteMapping("/{id}")
-    public MovieRoom deleteById(@RequestParam String id) {
+    public MovieRoom deleteById(@PathVariable String id) {
         return movieRoomService.deleteMovieRoomById(id);
     }
 

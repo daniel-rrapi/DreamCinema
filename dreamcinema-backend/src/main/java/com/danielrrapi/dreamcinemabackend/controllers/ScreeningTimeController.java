@@ -2,6 +2,7 @@ package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.ScreeningTime;
 import com.danielrrapi.dreamcinemabackend.entities.Seat;
+import com.danielrrapi.dreamcinemabackend.payloads.NewScreeningTimeDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewSeatDTO;
 import com.danielrrapi.dreamcinemabackend.services.ScreeningTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,17 @@ public class ScreeningTimeController {
     }
 
     @GetMapping("/{id}")
-    public ScreeningTime getScreeningTimeById(@RequestParam String id) {
+    public ScreeningTime getScreeningTimeById(@PathVariable String id) {
         return screeningTimeService.findScreeningTimeById(id);
     }
 
     @PostMapping
-    public ScreeningTime saveScreeningTime(@RequestBody ScreeningTime screeningTime) {
-        return screeningTimeService.save(screeningTime);
+    public ScreeningTime saveScreeningTime(@RequestBody NewScreeningTimeDTO payload) {
+        return screeningTimeService.save(payload);
     }
 
     @DeleteMapping("/{id}")
-    public ScreeningTime removeScreeningTimeById(@RequestParam String id) {
+    public ScreeningTime removeScreeningTimeById(@PathVariable String id) {
         return  screeningTimeService.deleteById(id);
     }
 }
