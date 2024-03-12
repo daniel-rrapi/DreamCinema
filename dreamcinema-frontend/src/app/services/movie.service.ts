@@ -14,7 +14,7 @@ export class MovieService {
       'http://localhost:8080/movies?size=' + size
     );
   }
-  getMovieById(id: string) {
+  getMovieById(id: string | null) {
     return this.http.get<ContentMovie>('http://localhost:8080/movies/' + id);
   }
 }

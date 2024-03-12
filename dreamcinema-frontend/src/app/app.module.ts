@@ -13,6 +13,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { HourFormatterPipe } from './pipes/hour-formatter.pipe';
 import { BookComponent } from './views/book/book.component';
 import { BannerBookComponent } from './components/banner-book/banner-book.component';
+import { DatesBookComponent } from './components/dates-book/dates-book.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BannerBookComponent } from './components/banner-book/banner-book.compon
     HourFormatterPipe,
     BookComponent,
     BannerBookComponent,
+    DatesBookComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

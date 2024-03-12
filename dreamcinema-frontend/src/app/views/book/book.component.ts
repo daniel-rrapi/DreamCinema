@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgControlStatusGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
+import { ContentMovie } from 'src/app/interfaces/movie-response';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -9,16 +11,25 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
+  movie!: ContentMovie;
+  movieId!: string | null;
   constructor(private movieSrv: MovieService, private route: ActivatedRoute) {
     route.paramMap
       .pipe(
         map((param) => {
           const id = param.get('id');
-          console.log(id);
+          return id;
         })
       )
-      .subscribe();
+      .subscribe((id) => {
+        this.movieId = id;
+      });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.movieSrv.getMovieById(this.movieId).subscribe((data) => {
+      this.movie = data;
+      console.log(this.movie);
+    });
+  }
 }
