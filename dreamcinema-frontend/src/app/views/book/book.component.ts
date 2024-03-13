@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgControlStatusGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, switchMap, tap } from 'rxjs';
-import { ContentMovie } from 'src/app/interfaces/movie-response';
+import { Movie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
-  movie!: ContentMovie;
+  movie!: Movie;
   movieId!: string | null;
   constructor(private movieSrv: MovieService, private route: ActivatedRoute) {
     route.paramMap

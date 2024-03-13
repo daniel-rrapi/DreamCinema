@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ContentMovie } from 'src/app/interfaces/movie-response';
+import { MovieContent } from 'src/app/interfaces/movie-response';
 
 @Component({
   selector: 'app-dates-book',
@@ -7,7 +7,7 @@ import { ContentMovie } from 'src/app/interfaces/movie-response';
   styleUrls: ['./dates-book.component.scss'],
 })
 export class DatesBookComponent implements OnInit {
-  @Input() movie!: ContentMovie;
+  @Input() movie!: MovieContent;
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ContentMovie, MovieResponse } from '../interfaces/movie-response';
+import { Movie, MoviePaged } from '../interfaces/movie';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
   getMovies(size: number = 10) {
-    return this.http.get<MovieResponse>(
+    return this.http.get<MoviePaged>(
       'http://localhost:8080/movies?size=' + size
     );
   }
   getMovieById(id: string | null) {
-    return this.http.get<ContentMovie>('http://localhost:8080/movies/' + id);
+    return this.http.get<Movie>('http://localhost:8080/movies/' + id);
   }
 }

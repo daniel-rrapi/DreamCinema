@@ -1,5 +1,8 @@
-export interface MovieResponse {
-  content: ContentMovie[];
+import { Pageable } from './pageable';
+import { Sort } from './sort';
+
+export interface MoviePaged {
+  content: Movie[];
   pageable: Pageable;
   totalPages: number;
   totalElements: number;
@@ -12,7 +15,7 @@ export interface MovieResponse {
   empty: boolean;
 }
 
-export interface ContentMovie {
+export interface Movie {
   id: string;
   title: string;
   description: string;
@@ -22,19 +25,4 @@ export interface ContentMovie {
   posterUrl: string;
   bannerUrl: string;
   genres: string[];
-}
-
-export interface Pageable {
-  pageNumber: number;
-  pageSize: number;
-  sort: Sort;
-  offset: number;
-  paged: boolean;
-  unpaged: boolean;
-}
-
-export interface Sort {
-  sorted: boolean;
-  unsorted: boolean;
-  empty: boolean;
 }
