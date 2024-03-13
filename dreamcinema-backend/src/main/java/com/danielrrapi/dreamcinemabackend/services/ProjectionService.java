@@ -37,6 +37,12 @@ public class ProjectionService {
         return projectionDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("Seat with id: " + id + " not found"));
     }
 
+    public Page<Projection> findProjectionsByMovieId(int pageNumber, int size, String orderBy, String id) {
+        if(size > 100) size = 100;
+        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
+        return projectionDAO.findProjectionsByMovieId(pageable, movieService.findMovieById(id));
+    }
+
     public Projection save(NewProjectionDTO payload) {
         Movie movie = movieService.findMovieById(payload.movieId());
         ScreeningTime screeningTime = screeningTimeService.findScreeningTimeById(payload.screeningTimeId());

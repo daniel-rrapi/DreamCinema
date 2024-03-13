@@ -1,5 +1,6 @@
 package com.danielrrapi.dreamcinemabackend.controllers;
 
+import com.danielrrapi.dreamcinemabackend.entities.Movie;
 import com.danielrrapi.dreamcinemabackend.entities.Projection;
 import com.danielrrapi.dreamcinemabackend.payloads.NewProjectionDTO;
 import com.danielrrapi.dreamcinemabackend.services.ProjectionService;
@@ -23,6 +24,14 @@ public class ProjectionController {
     @GetMapping("/{id}")
     public Projection getProjectionById(@PathVariable String id) {
         return projectionService.findProjectionById(id);
+    }
+
+    @GetMapping("/movies/{id}")
+    public Page<Projection> getProjectionsByMovieId(@RequestParam(defaultValue = "0") int pageNumber,
+                                     @RequestParam(defaultValue = "10") int size,
+                                     @RequestParam(defaultValue = "id") String orderBy,
+                                     @PathVariable String id) {
+return projectionService.findProjectionsByMovieId(pageNumber, size, orderBy, id);
     }
 
     @PostMapping

@@ -21,24 +21,24 @@ public class Projection {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    private Movie movieId;
+    private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "day_id")
-    private Day dayId;
+    private Day day;
 
     @ManyToOne
     @JoinColumn(name = "screening_time_id")
-    private ScreeningTime screeningTimeId;
+    private ScreeningTime screeningTime;
 
     @ManyToOne
     @JoinColumn(name = "movie_room_id")
-    private MovieRoom movieRoomId;
+    private MovieRoom movieRoom;
 
-    public Projection(Movie movieId, Day dayId, ScreeningTime screeningTimeId, MovieRoom movieRoomId) {
-        this.movieId = movieId;
-        this.dayId = dayId;
-        this.screeningTimeId = screeningTimeId;
-        this.movieRoomId = movieRoomId;
+    public Projection(Movie movie, Day day, ScreeningTime screeningTime, MovieRoom movieRoom) {
+        this.movie = movie;
+        this.day = day;
+        this.screeningTime = screeningTime;
+        this.movieRoom = movieRoom;
     }
 }
