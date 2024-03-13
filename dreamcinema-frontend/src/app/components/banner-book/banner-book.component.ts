@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ContentMovie } from 'src/app/interfaces/movie-response';
+import { Movie } from 'src/app/interfaces/movie';
 
 @Component({
   selector: 'app-banner-book',
@@ -7,7 +7,7 @@ import { ContentMovie } from 'src/app/interfaces/movie-response';
   styleUrls: ['./banner-book.component.scss'],
 })
 export class BannerBookComponent implements OnInit {
-  @Input() movie!: ContentMovie;
+  @Input() movie!: Movie;
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ContentMovie, MovieResponse } from 'src/app/interfaces/movie-response';
+import { Movie } from 'src/app/interfaces/movie';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,7 +7,7 @@ import { ContentMovie, MovieResponse } from 'src/app/interfaces/movie-response';
   styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movies: ContentMovie[] = [];
+  @Input() movies: Movie[] = [];
   @Input() index!: number;
 
   constructor() {}

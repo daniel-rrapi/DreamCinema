@@ -29,7 +29,6 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
     this.movieSrv.getMovieById(this.movieId).subscribe((data) => {
       this.movie = data;
-      console.log(this.movie);
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentMovie } from 'src/app/interfaces/movie-response';
+import { Movie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MoviesLandingpageComponent implements OnInit {
   constructor(private movieSrv: MovieService) {}
-  movies: ContentMovie[] = [];
+  movies: Movie[] = [];
   index: any;
   ngOnInit(): void {
     this.movieSrv.getMovies(4).subscribe((data) => {
