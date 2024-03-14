@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -39,6 +40,14 @@ public class ProjectionService {
 
     public Page<Projection> findProjectionsByMovieId(int pageNumber, int size, String orderBy, String id) {
         if(size > 100) size = 100;
+        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
+        return projectionDAO.findProjectionsByMovieId(pageable, movieService.findMovieById(id));
+    }
+
+    public Page<Projection> findProjectionsByMovieIdAndDay(int pageNumber, int size, String orderBy, String id, int dayOfMonth, int month, int year) {
+        if(size > 100) size = 100;
+        LocalDate localDate = LocalDate.of(year, month, dayOfMonth);
+        Day date = dayService.findDayByDate(localDate);
         Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
         return projectionDAO.findProjectionsByMovieId(pageable, movieService.findMovieById(id));
     }

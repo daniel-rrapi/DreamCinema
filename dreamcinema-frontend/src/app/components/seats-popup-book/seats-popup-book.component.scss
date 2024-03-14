@@ -1,0 +1,17 @@
+.layer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.808);
+}
+section {
+  width: 86vw;
+  height: 86vh;
+  position: fixed;
+  background-color: white;
+
+  top: 7%;
+  left: 7%;
+  color: black;
+}

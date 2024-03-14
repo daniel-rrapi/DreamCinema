@@ -21,7 +21,26 @@
     </div>
     <div class="col col-10">
       <div class="calendar">
-        <div></div>
+        <ul class="d-flex gap-4">
+          <li
+            *ngFor="let date of dates"
+            class="d-flex flex-column align-items-center"
+            (click)="onClick(date)"
+          >
+            <div class="">{{ date.date.date }}</div>
+            <div>{{ date.date.month | numberToMonth }}</div>
+          </li>
+        </ul>
+        <ng-container *ngIf="currentMoviesByDay">
+          <div
+            class="hours"
+            *ngFor="let content of currentMoviesByDay.content"
+            (click)="goToSeats(content)"
+            s
+          >
+            {{ content.screeningTime.startTime }}
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

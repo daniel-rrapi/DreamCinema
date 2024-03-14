@@ -2,6 +2,7 @@ package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.Movie;
 import com.danielrrapi.dreamcinemabackend.entities.Projection;
+import com.danielrrapi.dreamcinemabackend.payloads.NewDateDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewProjectionDTO;
 import com.danielrrapi.dreamcinemabackend.services.ProjectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,21 @@ public class ProjectionController {
 
     @GetMapping("/movies/{id}")
     public Page<Projection> getProjectionsByMovieId(@RequestParam(defaultValue = "0") int pageNumber,
-                                     @RequestParam(defaultValue = "10") int size,
-                                     @RequestParam(defaultValue = "id") String orderBy,
-                                     @PathVariable String id) {
+                                                    @RequestParam(defaultValue = "10") int size,
+                                                    @RequestParam(defaultValue = "id") String orderBy,
+                                                    @PathVariable String id) {
 return projectionService.findProjectionsByMovieId(pageNumber, size, orderBy, id);
+    }
+
+    @GetMapping("/movies/days/{id}")
+    public Page<Projection> getProjectionsByMovieId(@RequestParam(defaultValue = "0") int pageNumber,
+                                                    @RequestParam(defaultValue = "10") int size,
+                                                    @RequestParam(defaultValue = "id") String orderBy,
+                                                    @PathVariable String id,
+                                                    @RequestParam int day,
+                                                    @RequestParam int month,
+                                                    @RequestParam int year) {
+        return projectionService.findProjectionsByMovieIdAndDay(pageNumber, size, orderBy, id, day, month, year);
     }
 
     @PostMapping

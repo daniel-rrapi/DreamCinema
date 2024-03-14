@@ -1,2 +1,9 @@
 <app-banner-book [movie]="movie"></app-banner-book>
-<app-dates-book [movie]="movie"></app-dates-book>
+<app-dates-book
+  [movie]="movie"
+  [isSeatsPopUp]="isSeatsPopUp"
+  (changeSeatsBoolean)="aggiornaValore($event)"
+></app-dates-book>
+<ng-container *ngIf="isSeatsPopUp">
+  <app-seats-popup-book></app-seats-popup-book>
+</ng-container>

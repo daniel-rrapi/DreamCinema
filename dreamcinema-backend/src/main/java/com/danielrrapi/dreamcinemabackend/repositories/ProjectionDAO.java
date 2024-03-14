@@ -1,5 +1,6 @@
 package com.danielrrapi.dreamcinemabackend.repositories;
 
+import com.danielrrapi.dreamcinemabackend.entities.Day;
 import com.danielrrapi.dreamcinemabackend.entities.Movie;
 import com.danielrrapi.dreamcinemabackend.entities.Projection;
 import org.springframework.data.domain.Page;
@@ -16,4 +17,7 @@ import java.util.UUID;
 public interface ProjectionDAO extends JpaRepository<Projection, UUID> {
     @Query("SELECT p FROM Projection p WHERE p.movie = :movieId")
     Page<Projection> findProjectionsByMovieId(Pageable pageable, @Param("movieId") Movie movie);
+
+    @Query("SELECT p FROM Projection p WHERE p.movie = :movieId AND p.day = :dayId")
+    Page<Projection> findProjectionsByMovieIdAndDay(Pageable pageable, @Param("movieId") Movie movie, @Param("dayId")Day day);
 }

@@ -14,6 +14,8 @@ import { HourFormatterPipe } from './pipes/hour-formatter.pipe';
 import { BookComponent } from './views/book/book.component';
 import { BannerBookComponent } from './components/banner-book/banner-book.component';
 import { DatesBookComponent } from './components/dates-book/dates-book.component';
+import { NumberToMonthPipe } from './pipes/number-to-month.pipe';
+import { SeatsPopupBookComponent } from './components/seats-popup-book/seats-popup-book.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { DatesBookComponent } from './components/dates-book/dates-book.component
     BookComponent,
     BannerBookComponent,
     DatesBookComponent,
+    NumberToMonthPipe,
+    SeatsPopupBookComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

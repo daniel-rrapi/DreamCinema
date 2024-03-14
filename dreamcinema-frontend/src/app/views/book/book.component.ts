@@ -13,6 +13,10 @@ import { MovieService } from 'src/app/services/movie.service';
 export class BookComponent implements OnInit {
   movie!: Movie;
   movieId!: string | null;
+  isSeatsPopUp = false;
+  aggiornaValore(nuovoValore: boolean) {
+    this.isSeatsPopUp = nuovoValore;
+  }
   constructor(private movieSrv: MovieService, private route: ActivatedRoute) {
     route.paramMap
       .pipe(
