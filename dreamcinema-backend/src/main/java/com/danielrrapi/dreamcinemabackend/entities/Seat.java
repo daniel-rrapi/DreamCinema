@@ -26,11 +26,11 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "projection_id")
-    private Projection projectionId;
+    private Projection projection;
 
     public Seat(int number, boolean isBooked, Projection projectionId) {
         this.number = number;
         this.isBooked = isBooked;
-        this.projectionId = projectionId;
+        this.projection = projectionId;
     }
 }

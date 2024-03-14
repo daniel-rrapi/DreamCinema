@@ -4,6 +4,9 @@
   [isSeatsPopUp]="isSeatsPopUp"
   (changeSeatsBoolean)="aggiornaValore($event)"
 ></app-dates-book>
-<ng-container *ngIf="isSeatsPopUp">
-  <app-seats-popup-book></app-seats-popup-book>
+
+<ng-container *ngIf="isSeatsPopUp"
+  ><app-seats-popup-book
+    (changeSeatsBoolean)="aggiornaValore($event)"
+  ></app-seats-popup-book>
 </ng-container>

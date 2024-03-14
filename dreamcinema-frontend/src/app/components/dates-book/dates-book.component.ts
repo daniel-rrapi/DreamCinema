@@ -29,6 +29,7 @@ export class DatesBookComponent implements OnInit {
   goToSeats(content: Projection) {
     this.isSeatsPopUp = true;
     this.changeSeatsBoolean.emit(this.isSeatsPopUp);
+    this.projectionsSrv.updateProjection(content);
   }
   ngOnInit(): void {
     let moment = require('moment');
