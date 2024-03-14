@@ -27,6 +27,12 @@ public class SeatService {
         return seatDAO.findAll(pageable);
     }
 
+    public Page<Seat> findSeatsByProjectionId(int pageNumber, int size, String orderBy, String projectionId) {
+        if (size > 100) size = 100;
+        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
+        return seatDAO.findSeatsByProjection(pageable, projectionService.findProjectionById(projectionId));
+    }
+
     public Seat findSeatById(String id) {
         return seatDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("Seat with id: " + id + " not found"));
     }
