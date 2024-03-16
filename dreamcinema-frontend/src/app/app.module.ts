@@ -16,6 +16,8 @@ import { BannerBookComponent } from './components/banner-book/banner-book.compon
 import { DatesBookComponent } from './components/dates-book/dates-book.component';
 import { NumberToMonthPipe } from './pipes/number-to-month.pipe';
 import { SeatsPopupBookComponent } from './components/seats-popup-book/seats-popup-book.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { SeatsPopupBookComponent } from './components/seats-popup-book/seats-pop
     DatesBookComponent,
     NumberToMonthPipe,
     SeatsPopupBookComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
