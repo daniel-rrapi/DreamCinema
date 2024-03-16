@@ -1,6 +1,7 @@
 package com.danielrrapi.dreamcinemabackend.entities;
 
 import com.danielrrapi.dreamcinemabackend.enums.RoleType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties({"password", "credentialsNonExpired", "accountNonExpired", "authorities", "username", "accountNonLocked", "enabled"})
 @Table(name = "users")
 @Entity
 public class User implements UserDetails {
