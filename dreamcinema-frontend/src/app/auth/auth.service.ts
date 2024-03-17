@@ -12,14 +12,14 @@ import { NewUser } from '../interfaces/new-user';
 })
 export class AuthService {
   jwtHelper = new JwtHelperService();
-  apiUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl;
   private authSubj = new BehaviorSubject<null | UserData>(null);
   user$ = this.authSubj.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
   register(data: NewUser) {
-    return this.http.post(`${this.apiUrl}/register`, data).pipe(
+    return this.http.post(`${this.apiUrl}/auth/register`, data).pipe(
       tap(() => {
         this.router.navigate(['/login']);
       }),
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   login(data: { email: string; password: string }) {
-    return this.http.post<string>(`${this.apiUrl}/login`, data).pipe(
+    return this.http.post<string>(`${this.apiUrl}/auth/login`, data).pipe(
       tap((res) => {
         localStorage.setItem('token', res);
         this.getAuthenticatedUser().subscribe();
@@ -50,7 +50,18 @@ export class AuthService {
     location.reload();
   }
 
-  restore() {}
+  restore() {
+    const token = localStorage.getItem('token');
+
+    if (!this.authSubj.value) {
+      this.getAuthenticatedUser().subscribe();
+    }
+
+    if (this.jwtHelper.isTokenExpired(token)) {
+      this.router.navigate(['/login']);
+      return;
+    }
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
