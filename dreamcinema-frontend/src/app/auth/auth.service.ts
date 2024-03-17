@@ -36,12 +36,16 @@ export class AuthService {
   }
 
   login(data: { email: string; password: string }) {
-    return this.http.post<string>(`${this.apiUrl}/auth/login`, data).pipe(
-      tap((res) => {
-        localStorage.setItem('token', res);
-        this.getAuthenticatedUser().subscribe();
-      })
-    );
+    return this.http
+      .post<{ accessToken: string }>(`${this.apiUrl}/auth/login`, data)
+      .pipe(
+        tap((res) => {
+          localStorage.setItem('token', res.accessToken);
+          this.getAuthenticatedUser().subscribe();
+          let token = localStorage.getItem('token');
+          console.log(token);
+        })
+      );
   }
 
   logout() {
