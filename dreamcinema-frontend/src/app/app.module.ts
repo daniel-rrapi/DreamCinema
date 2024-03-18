@@ -20,6 +20,7 @@ import { SeatsPopupBookComponent } from './components/seats-popup-book/seats-pop
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     SeatsPopupBookComponent,
     RegisterComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

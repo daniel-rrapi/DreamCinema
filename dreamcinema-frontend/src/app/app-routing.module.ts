@@ -4,6 +4,8 @@ import { LandingpageComponent } from './views/landingpage/landingpage.component'
 import { BookComponent } from './views/book/book.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +23,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
