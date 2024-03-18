@@ -1,6 +1,7 @@
 package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.Ticket;
+import com.danielrrapi.dreamcinemabackend.payloads.NewTicketDTO;
 import com.danielrrapi.dreamcinemabackend.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,8 +26,8 @@ public class TicketController {
     }
 
     @PostMapping
-    public Ticket save(Ticket ticket) {
-        return ticketService.save(ticket);
+    public Ticket save(@RequestBody NewTicketDTO payload) {
+        return ticketService.save(payload);
     }
 
     @DeleteMapping("/{id}")

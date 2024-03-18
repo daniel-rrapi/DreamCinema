@@ -1,7 +1,9 @@
 package com.danielrrapi.dreamcinemabackend.services;
 
+import com.danielrrapi.dreamcinemabackend.entities.Seat;
 import com.danielrrapi.dreamcinemabackend.entities.Ticket;
 import com.danielrrapi.dreamcinemabackend.exceptions.NotFoundExcpetion;
+import com.danielrrapi.dreamcinemabackend.payloads.NewTicketDTO;
 import com.danielrrapi.dreamcinemabackend.repositories.TicketDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
@@ -16,6 +20,15 @@ import java.util.UUID;
 public class TicketService {
     @Autowired
     private TicketDAO ticketDAO;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ProjectionService projectionService;
+
+    @Autowired
+    private SeatService seatService;
 
     public Page<Ticket> getAllTickets(int pageNumber, int size, String orderBy) {
         if (size > 100) size = 100;
@@ -28,8 +41,12 @@ public class TicketService {
     }
 
 
-    public Ticket save(Ticket ticket) {
-        return ticketDAO.save(ticket);
+
+
+    public Ticket save(NewTicketDTO payload) {
+        seatService.setBookedToTrue(payload.seat());
+        Ticket newTicket = new Ticket(userService.findById(UUID.fromString(payload.user())), projectionService.findProjectionById(payload.projection()), seatService.findSeatById(payload.seat()));
+        return ticketDAO.save(newTicket);
     }
 
     public Ticket deleteById(String id) {

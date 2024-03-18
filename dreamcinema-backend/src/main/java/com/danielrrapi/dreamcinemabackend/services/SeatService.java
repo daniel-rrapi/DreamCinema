@@ -37,10 +37,17 @@ public class SeatService {
         return seatDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("Seat with id: " + id + " not found"));
     }
 
+    public Seat setBookedToTrue(String seatId) {
+        Seat found = this.findSeatById(seatId);
+        found.setBooked(true);
+       return seatDAO.save(found);
+    }
+
     public  Seat save(NewSeatDTO payload) {
         Projection projection = projectionService.findProjectionById(payload.projectionId());
         Seat newSeat = new Seat(payload.number(), payload.isBooked(), projection);
         return seatDAO.save(newSeat);
+
     }
 
     public Seat deleteById(String id) {

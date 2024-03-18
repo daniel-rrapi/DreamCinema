@@ -127,7 +127,8 @@
         </svg>
       </div>
       <h5>Your seat</h5>
-      <p></p>
+      <p *ngIf="selectedSeat !== 0">{{ selectedSeat }}</p>
+      <button class="btn btn-primary" (click)="checkout()">Book now</button>
     </div>
   </div>
 </section>

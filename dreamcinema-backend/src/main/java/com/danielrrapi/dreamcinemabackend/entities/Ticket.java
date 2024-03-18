@@ -21,19 +21,19 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "projection_id")
-    private Projection projectionId;
+    private Projection projection;
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
-    private Seat seatId;
+    private Seat seat;
 
-    public Ticket(User userId, Projection projectionId, Seat seatId) {
-        this.userId = userId;
-        this.projectionId = projectionId;
-        this.seatId = seatId;
+    public Ticket(User user, Projection projection, Seat seat) {
+        this.user = user;
+        this.projection = projection;
+        this.seat = seat;
     }
 }

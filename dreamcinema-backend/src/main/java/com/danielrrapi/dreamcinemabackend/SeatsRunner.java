@@ -16,7 +16,7 @@ public class SeatsRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        for(int i = 0; i < 40; i++) {
+//        for(int i = 1; i < 41; i++) {
 //
 //            seatController.saveSeat(new NewSeatDTO(i, false, projectionId));
 //        }
