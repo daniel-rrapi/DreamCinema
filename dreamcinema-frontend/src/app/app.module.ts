@@ -21,6 +21,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './views/profile/profile.component';
+import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfileComponent } from './views/profile/profile.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
+    OverviewProfileComponent,
   ],
   imports: [
     BrowserModule,

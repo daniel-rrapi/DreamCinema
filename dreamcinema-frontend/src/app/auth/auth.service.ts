@@ -67,6 +67,12 @@ export class AuthService {
     }
   }
 
+  isUserLoggedIn() {
+    if (this.authSubj.getValue()) {
+      return true;
+    } else return false;
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('An error occured: ', error.error.message);
