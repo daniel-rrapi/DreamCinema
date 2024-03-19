@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Projection } from 'src/app/interfaces/projection';
@@ -13,7 +19,7 @@ import { TicketService } from 'src/app/services/ticket.service';
   templateUrl: './seats-popup-book.component.html',
   styleUrls: ['./seats-popup-book.component.scss'],
 })
-export class SeatsPopupBookComponent implements OnInit {
+export class SeatsPopupBookComponent implements OnInit, OnDestroy {
   @Output() changeSeatsBoolean = new EventEmitter<boolean>();
   user!: UserData | null;
   currentProjection!: Projection | null;
@@ -28,6 +34,9 @@ export class SeatsPopupBookComponent implements OnInit {
   ) {
     authSrv.restore();
     authSrv.user$.subscribe((data) => (this.user = data));
+  }
+  ngOnDestroy(): void {
+    document.body.style.overflow = 'scroll';
   }
 
   ngOnInit(): void {

@@ -15,6 +15,7 @@ import { UserData } from '../interfaces/user-data';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authSrv: AuthService, private route: Router) {
+    authSrv.restore();
     authSrv.user$.subscribe((userRes) => (this.user = userRes));
   }
   user!: UserData | null;
@@ -29,7 +30,7 @@ export class AuthGuard implements CanActivate {
     if (this.user) {
       return true;
     } else {
-      this.route.navigate(['/login']);
+      this.route.createUrlTree(['/login']);
       return false;
     }
   }

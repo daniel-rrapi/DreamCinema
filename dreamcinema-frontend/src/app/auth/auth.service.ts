@@ -43,7 +43,10 @@ export class AuthService {
           localStorage.setItem('token', res.accessToken);
           this.getAuthenticatedUser().subscribe();
           let token = localStorage.getItem('token');
-          console.log(token);
+          this.router.navigate(['']);
+        }),
+        catchError((err) => {
+          return throwError(err);
         })
       );
   }
@@ -62,7 +65,7 @@ export class AuthService {
     }
 
     if (this.jwtHelper.isTokenExpired(token)) {
-      this.router.navigate(['/login']);
+      this.router.createUrlTree(['/login']);
       return;
     }
   }
