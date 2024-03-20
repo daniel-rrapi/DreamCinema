@@ -19,5 +19,6 @@ public record NewUserDTO(
         @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
         LocalDate dob
 
+
 ) {
 }

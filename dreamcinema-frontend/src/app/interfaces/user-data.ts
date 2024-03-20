@@ -4,5 +4,6 @@ export interface UserData {
   surname: string;
   email: string;
   dob: Date;
+  profilePic: string;
   roleType: string;
 }

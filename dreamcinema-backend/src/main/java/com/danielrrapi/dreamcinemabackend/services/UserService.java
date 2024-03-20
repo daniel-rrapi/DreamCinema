@@ -20,4 +20,6 @@ public class UserService {
     public User findByEmail(String email) {
         return userDAO.findByEmail(email).orElseThrow(() -> new NotFoundExcpetion("User with email: "+ email + " not found"));
     }
+
+    public User 
 }
