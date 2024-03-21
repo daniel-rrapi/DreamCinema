@@ -3,7 +3,7 @@ ul {
 }
 li {
   cursor: pointer;
-  color: var(--yellow);
+  color: white;
   border: 1px solid transparent;
   padding: 5px 10px;
   border-radius: 111px;
@@ -12,5 +12,6 @@ li:hover {
   background-color: #ffff001a;
 }
 .selected {
-  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  background-color: #ffff001a;
 }

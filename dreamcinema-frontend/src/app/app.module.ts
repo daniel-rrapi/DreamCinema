@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './views/profile/profile.component';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
+import { TicketsProfileComponent } from './components/tickets-profile/tickets-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +44,14 @@ import { OverviewProfileComponent } from './components/overview-profile/overview
     LoginComponent,
     ProfileComponent,
     OverviewProfileComponent,
+    TicketsProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    QRCodeModule,
   ],
   providers: [
     {
