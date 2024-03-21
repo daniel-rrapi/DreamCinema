@@ -1,1 +1,14 @@
-<div class="container"></div>
+<div class="container">
+  <h1>Your tickets:</h1>
+  <div class="row row-cols-1">
+    <div class="col" *ngFor="let ticket of pagedTickets.content">
+      <img src="{{ ticket.projection.movie.posterUrl }}" alt="" />
+      <p>{{ ticket.projection.movie.title }}</p>
+      <p>{{ ticket.projection.day.date }}</p>
+      <p>
+        {{ ticket.projection.screeningTime.startTime | slice : 0 : 5 }}
+      </p>
+      <p>Seat: {{ ticket.seat.number }}</p>
+    </div>
+  </div>
+</div>

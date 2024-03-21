@@ -1,7 +1,10 @@
 import { Pageable } from './pageable';
+import { Projection } from './projection';
+import { Seat } from './seat';
 import { Sort } from './sort';
+import { UserData } from './user-data';
 
-export interface SeatPaged {
+export interface TicketPaged {
   content: Ticket[];
   pageable: Pageable;
   totalPages: number;
@@ -16,7 +19,7 @@ export interface SeatPaged {
 }
 export interface Ticket {
   id: string;
-  user: string;
-  projection: string;
-  seat: string;
+  user: UserData;
+  projection: Projection;
+  seat: Seat;
 }
