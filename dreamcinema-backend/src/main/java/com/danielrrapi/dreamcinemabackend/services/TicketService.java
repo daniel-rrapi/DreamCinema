@@ -2,6 +2,7 @@ package com.danielrrapi.dreamcinemabackend.services;
 
 import com.danielrrapi.dreamcinemabackend.entities.Seat;
 import com.danielrrapi.dreamcinemabackend.entities.Ticket;
+import com.danielrrapi.dreamcinemabackend.entities.User;
 import com.danielrrapi.dreamcinemabackend.exceptions.NotFoundExcpetion;
 import com.danielrrapi.dreamcinemabackend.payloads.NewTicketDTO;
 import com.danielrrapi.dreamcinemabackend.repositories.TicketDAO;
@@ -35,7 +36,11 @@ public class TicketService {
         Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
         return ticketDAO.findAll(pageable);
     }
-
+    public Page<Ticket> findAllTicketsByUser(int pageNumber, int size, String orderBy, User user) {
+        if (size > 100) size = 100;
+        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
+        return ticketDAO.findTicketsByUser(pageable, user);
+    }
     public Ticket findTicketById(String id) {
         return ticketDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("Date with id: " + id + " not found"));
     }

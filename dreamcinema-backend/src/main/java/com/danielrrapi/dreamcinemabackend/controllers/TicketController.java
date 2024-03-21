@@ -1,10 +1,12 @@
 package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.Ticket;
+import com.danielrrapi.dreamcinemabackend.entities.User;
 import com.danielrrapi.dreamcinemabackend.payloads.NewTicketDTO;
 import com.danielrrapi.dreamcinemabackend.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +20,10 @@ public class TicketController {
                                      @RequestParam(defaultValue = "10") int size,
                                      @RequestParam(defaultValue = "id") String orderBy) {
         return ticketService.getAllTickets(pageNumber, size, orderBy);
+    }
+    @GetMapping("/user")
+    public Page<Ticket> getAllTicketsByUser(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id") String orderBy, @AuthenticationPrincipal User currentAuthenticatedUser) {
+        return ticketService.findAllTicketsByUser(pageNumber, size, orderBy, currentAuthenticatedUser);
     }
 
     @GetMapping("/{id}")
