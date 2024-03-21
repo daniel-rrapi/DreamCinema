@@ -1,13 +1,11 @@
 package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.User;
+import com.danielrrapi.dreamcinemabackend.payloads.ModifiedUserDTO;
 import com.danielrrapi.dreamcinemabackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -18,8 +16,8 @@ public class UserController {
     @GetMapping("/me")
     public User getProfile(@AuthenticationPrincipal User currentAuthenticatedUser) {return currentAuthenticatedUser;}
 
-    @PatchMapping
-    public User patchUser() {
-
+    @PutMapping("/{id}")
+    public User modifyUser(@PathVariable String id, @RequestBody ModifiedUserDTO payload) {
+        return userService.modifyUser(payload, id);
     }
 }

@@ -1,1 +1,12 @@
-<app-overview-profile></app-overview-profile>
+<div class="container mt-6">
+  <ul class="d-flex gap-4">
+    <li (click)="changePage('profile')" [class.selected]="isProfile">
+      Profile
+    </li>
+    <li (click)="changePage('tickets')" [class.selected]="isTickets">
+      Tickets
+    </li>
+    <li (click)="changePage('admin')" [class.selected]="isAdmin">Admin</li>
+  </ul>
+</div>
+<app-overview-profile *ngIf="isProfile"></app-overview-profile>

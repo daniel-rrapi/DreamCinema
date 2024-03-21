@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ModifiedUser } from 'src/app/interfaces/modified-user';
 import { UserData } from 'src/app/interfaces/user-data';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-overview-profile',
@@ -12,7 +14,7 @@ export class OverviewProfileComponent implements OnInit {
   user!: UserData | null;
   profileForm!: FormGroup;
   areInputsDisabled!: boolean;
-  constructor(private authSrv: AuthService) {
+  constructor(private authSrv: AuthService, private userSrv: UserService) {
     authSrv.user$.subscribe(
       (res) => (
         (this.user = res), this.initializeForm(), this.disableEditMode()
@@ -41,7 +43,25 @@ export class OverviewProfileComponent implements OnInit {
     this.areInputsDisabled = false;
   }
 
-  saveChanges() {}
+  saveChanges() {
+    let moment = require('moment');
+
+    let firstName = this.profileForm.value.firstName;
+    let lastName = this.profileForm.value.lastName;
+    let email = this.profileForm.value.email;
+    let dob = moment(this.profileForm.value.dob).format('YYYY/MM/DD');
+
+    let formaData: ModifiedUser = {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      dob: dob,
+    };
+    if (this.user) {
+      this.userSrv.modifyUser(formaData, this.user.id).subscribe();
+    }
+    this.disableEditMode();
+  }
 
   cancelChanges() {
     this.profileForm.get('firstName')?.patchValue(this.user?.name);
