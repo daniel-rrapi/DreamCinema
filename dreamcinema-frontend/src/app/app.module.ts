@@ -24,6 +24,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './views/profile/profile.component';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 import { TicketsProfileComponent } from './components/tickets-profile/tickets-profile.component';
+import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TicketsProfileComponent } from './components/tickets-profile/tickets-pr
     ProfileComponent,
     OverviewProfileComponent,
     TicketsProfileComponent,
+    QrcodeProfileComponent,
   ],
   imports: [
     BrowserModule,

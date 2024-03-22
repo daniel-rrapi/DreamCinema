@@ -1,14 +1,53 @@
 <div class="container">
   <h1>Your tickets:</h1>
-  <div class="row row-cols-1">
-    <div class="col" *ngFor="let ticket of pagedTickets.content">
+  <div class="row row-cols-1 mt-6">
+    <div
+      class="col d-flex gap-6 py-4 borderbottom"
+      *ngFor="let ticket of pagedTickets.content; first as isFirst"
+      [ngClass]="{ bordertop: isFirst }"
+    >
       <img src="{{ ticket.projection.movie.posterUrl }}" alt="" />
-      <p>{{ ticket.projection.movie.title }}</p>
-      <p>{{ ticket.projection.day.date }}</p>
-      <p>
-        {{ ticket.projection.screeningTime.startTime | slice : 0 : 5 }}
-      </p>
-      <p>Seat: {{ ticket.seat.number }}</p>
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <p class="fw-light">
+          <span class="fw-bold">Movie:</span>
+          {{ ticket.projection.movie.title }}
+        </p>
+        <p class="fw-light">
+          <span class="fw-bold">Projection day:</span>
+          {{ ticket.projection.day.date }}
+        </p>
+        <p class="fw-light">
+          <span class="fw-bold">Screening time:</span>
+          {{ ticket.projection.screeningTime.startTime | slice : 0 : 5 }}
+        </p>
+        <p class="fw-light">
+          <span class="fw-bold">Seat:</span> {{ ticket.seat.number }}
+        </p>
+        <button
+          class="font-monospace btn btn-outline-primary"
+          (click)="displayQrCode(ticket)"
+        >
+          QR Code
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-up-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>
+<app-qrcode-profile
+  *ngIf="isQrCodeDisplayed"
+  [ticket]="currentTicket"
+  (isQrCodeDisplayed)="closeQrCodeWindow($event)"
+></app-qrcode-profile>
