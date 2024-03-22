@@ -1,5 +1,5 @@
 <div class="container mt-6">
-  <ul class="d-flex gap-4">
+  <ul class="d-flex gap-4 mb-5">
     <li (click)="changePage('profile')" [class.selected]="isProfile">
       Profile
     </li>
@@ -11,3 +11,4 @@
 </div>
 <app-overview-profile *ngIf="isProfile"></app-overview-profile>
 <app-tickets-profile *ngIf="isTickets"></app-tickets-profile>
+<app-admin-panel-profile *ngIf="isAdmin"></app-admin-panel-profile>

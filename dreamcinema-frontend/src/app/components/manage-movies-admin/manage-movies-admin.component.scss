@@ -1,0 +1,26 @@
+.cont {
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cont:hover .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.77
+  ); /* Il quarto valore rappresenta l'opacità */
+  z-index: 3; /* Assicura che l'overlay si trovi sopra l'elemento */
+}
+.overlay svg {
+  display: none;
+}
+.cont:hover .overlay svg {
+  display: block;
+}

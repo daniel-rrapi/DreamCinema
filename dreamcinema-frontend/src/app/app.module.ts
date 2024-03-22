@@ -25,6 +25,8 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 import { TicketsProfileComponent } from './components/tickets-profile/tickets-profile.component';
 import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profile.component';
+import { AdminPanelProfileComponent } from './components/admin-panel-profile/admin-panel-profile.component';
+import { ManageMoviesAdminComponent } from './components/manage-movies-admin/manage-movies-admin.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profi
     OverviewProfileComponent,
     TicketsProfileComponent,
     QrcodeProfileComponent,
+    AdminPanelProfileComponent,
+    ManageMoviesAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-2 p-0">
+      <ul>
+        <li (click)="manage('movies')">MANAGE MOVIES</li>
+        <hr />
+        <li (click)="manage('projections')">MANAGE PROJECTIONS</li>
+      </ul>
+    </div>
+    <div class="col col-10 p-0">
+      <app-manage-movies-admin *ngIf="isManageMovies"></app-manage-movies-admin>
+    </div>
+  </div>
+</div>
