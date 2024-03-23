@@ -1,14 +1,18 @@
 <div class="container mt-6">
   <ul class="d-flex gap-4 mb-5">
-    <li (click)="changePage('profile')" [class.selected]="isProfile">
-      Profile
-    </li>
-    <li (click)="changePage('tickets')" [class.selected]="isTickets">
-      Tickets
-    </li>
-    <li (click)="changePage('admin')" [class.selected]="isAdmin">Admin</li>
+    <a routerLink="overview">
+      <li (click)="changePage('profile')" [class.selected]="isProfile">
+        Profile
+      </li>
+    </a>
+    <a routerLink="tickets">
+      <li (click)="changePage('tickets')" [class.selected]="isTickets">
+        Tickets
+      </li>
+    </a>
+    <a routerLink="admin-panel" *ngIf="user?.roleType === 'ADMIN'">
+      <li (click)="changePage('admin')" [class.selected]="isAdmin">Admin</li></a
+    >
   </ul>
+  <router-outlet></router-outlet>
 </div>
-<app-overview-profile *ngIf="isProfile"></app-overview-profile>
-<app-tickets-profile *ngIf="isTickets"></app-tickets-profile>
-<app-admin-panel-profile *ngIf="isAdmin"></app-admin-panel-profile>
