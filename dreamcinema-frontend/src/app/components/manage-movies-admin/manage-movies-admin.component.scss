@@ -24,3 +24,16 @@
 .cont:hover .overlay svg {
   display: block;
 }
+.modify-movie {
+  width: 86vw;
+  height: 86vh;
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  top: 7%;
+  left: 7%;
+  border-radius: 5px;
+}
+label {
+  color: black;
+}

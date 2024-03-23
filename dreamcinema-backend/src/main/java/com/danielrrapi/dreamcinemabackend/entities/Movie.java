@@ -28,6 +28,7 @@ public class Movie {
     private int year;
 
     private String country;
+
     @JsonFormat(pattern = "H:mm", shape = JsonFormat.Shape.STRING)
     private LocalTime duration;
 
