@@ -21,7 +21,7 @@ export interface Movie {
   description: string;
   year: number;
   country: string;
-  duration: null;
+  duration: string;
   posterUrl: string;
   bannerUrl: string;
   genres: string[];

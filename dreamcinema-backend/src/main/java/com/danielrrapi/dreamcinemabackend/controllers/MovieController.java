@@ -31,4 +31,14 @@ public class MovieController {
         return movieService.saveMovie(movie);
     }
 
+    @PutMapping
+    public Movie modifyMovie(@RequestBody Movie movie ) {
+        return movieService.saveModifiedMovie(movie);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable String id) {
+        movieService.deleteMovieById(id);
+    }
+
 }

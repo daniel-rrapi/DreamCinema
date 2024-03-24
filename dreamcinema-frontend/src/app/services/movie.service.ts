@@ -11,10 +11,24 @@ export class MovieService {
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
+
   getMovies(size: number = 10) {
     return this.http.get<MoviePaged>(this.apiUrl + '/movies?size=' + size);
   }
+
   getMovieById(id: string | null) {
     return this.http.get<Movie>(this.apiUrl + '/movies/' + id);
+  }
+
+  saveMovie(movie?: Movie) {
+    return this.http.post<Movie>(`${this.apiUrl}/movies`, movie);
+  }
+
+  modifyMovie(movie: Movie) {
+    return this.http.put<Movie>(`${this.apiUrl}/movies`, movie);
+  }
+
+  deleteMovie(id: string) {
+    return this.http.delete(`${this.apiUrl}/movies/${id}`);
   }
 }

@@ -31,5 +31,14 @@ public class MovieService {
         return movieDAO.save(movie);
     }
 
+    public Movie saveModifiedMovie(Movie movie) {
+        return movieDAO.save(movie);
+    }
+
+    public void deleteMovieById(String id) {
+        Movie found = this.findMovieById(id);
+        movieDAO.delete(found);
+    }
+
 
 }
