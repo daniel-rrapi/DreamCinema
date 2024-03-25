@@ -27,6 +27,7 @@ import { TicketsProfileComponent } from './components/tickets-profile/tickets-pr
 import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profile.component';
 import { AdminPanelProfileComponent } from './components/admin-panel-profile/admin-panel-profile.component';
 import { ManageMoviesAdminComponent } from './components/manage-movies-admin/manage-movies-admin.component';
+import { ManageProjectionsAdminComponent } from './components/manage-projections-admin/manage-projections-admin.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ManageMoviesAdminComponent } from './components/manage-movies-admin/man
     QrcodeProfileComponent,
     AdminPanelProfileComponent,
     ManageMoviesAdminComponent,
+    ManageProjectionsAdminComponent,
   ],
   imports: [
     BrowserModule,

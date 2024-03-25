@@ -1,7 +1,7 @@
 import { Pageable } from './pageable';
 import { Sort } from './sort';
 
-export interface MovieRoom {
+export interface MovieRoomPaged {
   content: MovieRoom[];
   pageable: Pageable;
   totalPages: number;

@@ -14,6 +14,23 @@ export class ProjectionService {
 
   constructor(private http: HttpClient) {}
 
+  getProjections(pageNum = 0, size = 10, orderBy = 'day') {
+    return this.http.get<ProjectionPaged>(
+      `${this.apiUrl}/projections?pageNumber=${pageNum}&size=${size}&orderBy=${orderBy}`
+    );
+  }
+
+  saveProjection(projection: Projection) {
+    return this.http.post<Projection>(`${this.apiUrl}/projections`, projection);
+  }
+
+  updateModifiedProjection(modifiedProjection: Projection) {
+    return this.http.put<Projection>(
+      `${this.apiUrl}/projections`,
+      modifiedProjection
+    );
+  }
+
   updateProjection(data: Projection) {
     this.currentProjection.next(data);
   }
