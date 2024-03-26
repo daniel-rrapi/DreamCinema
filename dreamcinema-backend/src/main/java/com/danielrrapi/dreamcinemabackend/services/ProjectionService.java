@@ -2,7 +2,10 @@ package com.danielrrapi.dreamcinemabackend.services;
 
 import com.danielrrapi.dreamcinemabackend.entities.*;
 import com.danielrrapi.dreamcinemabackend.exceptions.NotFoundExcpetion;
+import com.danielrrapi.dreamcinemabackend.payloads.ModifiedProjectionDTO;
+import com.danielrrapi.dreamcinemabackend.payloads.NewDateDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewProjectionDTO;
+import com.danielrrapi.dreamcinemabackend.payloads.NewScreeningTimeDTO;
 import com.danielrrapi.dreamcinemabackend.repositories.ProjectionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,11 +56,24 @@ public class ProjectionService {
     }
 
     public Projection save(NewProjectionDTO payload) {
-        Movie movie = movieService.findMovieById(payload.movieId());
-        ScreeningTime screeningTime = screeningTimeService.findScreeningTimeById(payload.screeningTimeId());
-        Day day = dayService.findDayById(payload.dayId());
-        MovieRoom movieRoom = movieRoomService.findMovieRoomById(payload.movieRoomId());
+        Movie movie = movieService.findMovieById(payload.movie());
+        ScreeningTime screeningTime = screeningTimeService.save(new NewScreeningTimeDTO(payload.screeningTime()));
+        Day day = dayService.save(new NewDateDTO(payload.day()));
+        MovieRoom movieRoom = movieRoomService.findMovieRoomById(payload.movieRoom());
         Projection newProjection = new Projection(movie, day, screeningTime, movieRoom);
+        return projectionDAO.save(newProjection);
+    }
+
+    public Projection saveModifiedProjection(ModifiedProjectionDTO payload) {
+        Movie movie = movieService.findMovieById(payload.movie());
+        ScreeningTime screeningTime = screeningTimeService.save(new NewScreeningTimeDTO(payload.screeningTime()));
+        Day day = dayService.save(new NewDateDTO(payload.day()));
+        MovieRoom movieRoom = movieRoomService.findMovieRoomById(payload.movieRoom());
+        Projection newProjection = this.findProjectionById(payload.id());
+        newProjection.setDay(day);
+        newProjection.setMovie(movie);
+        newProjection.setMovieRoom(movieRoom);
+        newProjection.setScreeningTime(screeningTime);
         return projectionDAO.save(newProjection);
     }
 

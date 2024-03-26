@@ -2,6 +2,7 @@ package com.danielrrapi.dreamcinemabackend.controllers;
 
 import com.danielrrapi.dreamcinemabackend.entities.Movie;
 import com.danielrrapi.dreamcinemabackend.entities.Projection;
+import com.danielrrapi.dreamcinemabackend.payloads.ModifiedProjectionDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewDateDTO;
 import com.danielrrapi.dreamcinemabackend.payloads.NewProjectionDTO;
 import com.danielrrapi.dreamcinemabackend.services.ProjectionService;
@@ -50,4 +51,10 @@ return projectionService.findProjectionsByMovieId(pageNumber, size, orderBy, id)
     public Projection save(@RequestBody NewProjectionDTO payload) {
         return projectionService.save(payload);
     }
+
+    @PutMapping
+    public  Projection saveModifiedProjection(@RequestBody ModifiedProjectionDTO payload) {return projectionService.saveModifiedProjection(payload);}
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) { projectionService.deleteById(id);}
 }

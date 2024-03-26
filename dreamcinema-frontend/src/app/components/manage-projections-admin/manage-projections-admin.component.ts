@@ -45,7 +45,7 @@ export class ManageProjectionsAdminComponent implements OnInit {
         movie: new FormControl(this.currentProjection.movie.id),
         day: new FormControl(this.currentProjection.day.date),
         screeningTime: new FormControl(
-          this.currentProjection.screeningTime.startTime
+          this.currentProjection.screeningTime.startTime.slice(0, -3)
         ),
         movieRoom: new FormControl(this.currentProjection.movieRoom.id),
       });
@@ -70,7 +70,10 @@ export class ManageProjectionsAdminComponent implements OnInit {
     this.currentProjection = null;
   }
 
-  deleteCurrentProjection() {}
+  deleteCurrentProjection() {
+    this.projectionSrv.delete(this.currentProjection?.id!).subscribe();
+    this.closeWindow();
+  }
 
   formSubmit() {
     if (this.isCreatingMode) {

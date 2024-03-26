@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,10 +36,12 @@ public class DayService {
     }
 
     public Day save(NewDateDTO payload) {
-        dayDAO.findByDate(payload.date()).ifPresent(day -> {
-            throw new BadRequestException("Day: " + day + " already exist");
-        });
-        return dayDAO.save(new Day(payload.date()));
+        Optional<Day> existingDay = dayDAO.findByDate(payload.date());
+        if (existingDay.isPresent()) {
+            return existingDay.get(); // Se il giorno esiste già, restituiscilo direttamente
+        } else {
+            return dayDAO.save(new Day(payload.date())); // Altrimenti, salva un nuovo giorno e restituiscilo
+        }
     }
 
     public Day deleteById(String id) {

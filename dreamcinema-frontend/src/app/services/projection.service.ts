@@ -53,4 +53,8 @@ export class ProjectionService {
         year
     );
   }
+
+  delete(id: string) {
+    return this.http.delete(`${this.apiUrl}/projections/${id}`);
+  }
 }
