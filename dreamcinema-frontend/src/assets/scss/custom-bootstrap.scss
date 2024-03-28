@@ -5,6 +5,7 @@
 $green: #0e8784;
 $yellow: #fee505;
 $primary: $yellow;
+$info: #fff178;
 
 $light-green: #66d2cf;
 $secondary: $light-green;
@@ -69,7 +70,7 @@ $spacers: (
     (
       $spacer * 9.375,
     )
-    //150px,,,,,,,,
+    //150px,,,,,,,,,
 );
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";

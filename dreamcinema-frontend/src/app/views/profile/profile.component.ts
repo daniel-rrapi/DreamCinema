@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { UserData } from 'src/app/interfaces/user-data';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +13,11 @@ export class ProfileComponent implements OnInit {
   isProfile = true;
   isTickets = false;
   isAdmin = false;
-  constructor(private authSrv: AuthService) {
+  isPopup!: boolean;
+  constructor(private authSrv: AuthService, private popupSrv: PopupService) {
     authSrv.restore();
     authSrv.user$.subscribe((res) => (this.user = res));
+    popupSrv.isPopup$.subscribe((res) => (this.isPopup = res));
   }
 
   ngOnInit(): void {}

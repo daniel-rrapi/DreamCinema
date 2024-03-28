@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MoviePaged } from 'src/app/interfaces/movie';
 import { MovieRoomPaged } from 'src/app/interfaces/movie-room';
 import { Projection, ProjectionPaged } from 'src/app/interfaces/projection';
 import { MovieRoomService } from 'src/app/services/movie-room.service';
 import { MovieService } from 'src/app/services/movie.service';
+import { PopupService } from 'src/app/services/popup.service';
 import { ProjectionService } from 'src/app/services/projection.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ProjectionService } from 'src/app/services/projection.service';
   templateUrl: './manage-projections-admin.component.html',
   styleUrls: ['./manage-projections-admin.component.scss'],
 })
-export class ManageProjectionsAdminComponent implements OnInit {
+export class ManageProjectionsAdminComponent implements OnInit, OnDestroy {
   projections!: ProjectionPaged;
   movies!: MoviePaged;
   movieRooms!: MovieRoomPaged;
@@ -24,11 +25,15 @@ export class ManageProjectionsAdminComponent implements OnInit {
   constructor(
     private projectionSrv: ProjectionService,
     private movieSrv: MovieService,
-    private movieRoomSrv: MovieRoomService
+    private movieRoomSrv: MovieRoomService,
+    private popupSrv: PopupService
   ) {
     projectionSrv.getProjections().subscribe((res) => (this.projections = res));
     movieSrv.getMovies(100).subscribe((res) => (this.movies = res));
     movieRoomSrv.getMovieRooms().subscribe((res) => (this.movieRooms = res));
+  }
+  ngOnDestroy(): void {
+    this.popupSrv.setPopupState(false);
   }
 
   ngOnInit(): void {}
@@ -40,6 +45,7 @@ export class ManageProjectionsAdminComponent implements OnInit {
   }
 
   openModifyWindow() {
+    this.popupSrv.setPopupState(true);
     if (this.currentProjection) {
       this.form = new FormGroup({
         movie: new FormControl(this.currentProjection.movie.id),
@@ -53,18 +59,20 @@ export class ManageProjectionsAdminComponent implements OnInit {
   }
 
   openCreateWindow() {
+    this.popupSrv.setPopupState(true);
     this.currentProjection = null;
     this.isCreatingMode = true;
 
     this.form = new FormGroup({
-      movie: new FormControl(),
-      day: new FormControl(),
-      screeningTime: new FormControl(),
-      movieRoom: new FormControl(),
+      movie: new FormControl('', Validators.required),
+      day: new FormControl('', Validators.required),
+      screeningTime: new FormControl('', Validators.required),
+      movieRoom: new FormControl('', Validators.required),
     });
   }
 
   closeWindow() {
+    this.popupSrv.setPopupState(false);
     this.isCreatingMode = false;
     this.isModifyMode = false;
     this.currentProjection = null;

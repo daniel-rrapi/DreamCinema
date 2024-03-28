@@ -2,9 +2,16 @@
   <div class="row">
     <div class="col col-2 p-0">
       <ul>
-        <li (click)="manage('movies')">MANAGE MOVIES</li>
+        <li (click)="manage('movies')" [class.selected]="isManageMovies">
+          MANAGE MOVIES
+        </li>
         <hr />
-        <li (click)="manage('projections')">MANAGE PROJECTIONS</li>
+        <li
+          (click)="manage('projections')"
+          [class.selected]="isManageProjections"
+        >
+          MANAGE PROJECTIONS
+        </li>
       </ul>
     </div>
     <div class="col col-10 p-0">

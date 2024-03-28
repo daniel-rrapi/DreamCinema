@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Movie, MoviePaged } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-manage-movies-admin',
   templateUrl: './manage-movies-admin.component.html',
   styleUrls: ['./manage-movies-admin.component.scss'],
 })
-export class ManageMoviesAdminComponent implements OnInit {
+export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
   movies!: MoviePaged;
   isModifyMode = false;
   isCreatingMode = false;
   currentMovie: Movie | null = null;
   form!: FormGroup;
 
-  constructor(private movieSrv: MovieService) {
+  constructor(private movieSrv: MovieService, private popupSrv: PopupService) {
     movieSrv.getMovies(10).subscribe((res) => (this.movies = res));
+  }
+  ngOnDestroy(): void {
+    this.popupSrv.setPopupState(false);
   }
 
   ngOnInit(): void {}
@@ -28,6 +32,7 @@ export class ManageMoviesAdminComponent implements OnInit {
   }
 
   openModifyWindow() {
+    this.popupSrv.setPopupState(true);
     if (this.currentMovie) {
       this.form = new FormGroup({
         title: new FormControl(this.currentMovie.title),
@@ -43,22 +48,24 @@ export class ManageMoviesAdminComponent implements OnInit {
   }
 
   openCreateWindow() {
+    this.popupSrv.setPopupState(true);
     this.currentMovie = null;
     this.isCreatingMode = true;
 
     this.form = new FormGroup({
-      title: new FormControl(),
-      description: new FormControl(),
-      year: new FormControl(),
-      country: new FormControl(),
-      duration: new FormControl(),
-      posterUrl: new FormControl(),
-      bannerUrl: new FormControl(),
-      genres: new FormControl(),
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      year: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      duration: new FormControl('', Validators.required),
+      posterUrl: new FormControl('', Validators.required),
+      bannerUrl: new FormControl('', Validators.required),
+      genres: new FormControl('', Validators.required),
     });
   }
 
   closeWindow() {
+    this.popupSrv.setPopupState(false);
     this.isCreatingMode = false;
     this.isModifyMode = false;
     this.currentMovie = null;
