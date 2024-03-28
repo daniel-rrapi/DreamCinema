@@ -1,6 +1,11 @@
-<nav class="navbar navbar-expand-lg bg-transparent position-fixed top-0">
+<nav
+  [ngClass]="{ scrolled: isScrolled }"
+  class="navbar navbar-expand-lg fixed-top"
+>
   <div class="container">
-    <a class="navbar-brand" href="#"> </a>
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/imgs/logo-transparent.png" alt="" />
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -31,19 +36,32 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" routerLink="/" [class.active]="isActive('/')"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Movies</a>
+          <a class="nav-link" routerLink="/movies" routerLinkActive="active"
+            >Movies</a
+          >
         </li>
         <li *ngIf="user" class="nav-item">
-          <a class="nav-link" routerLink="profile/overview">Profile</a>
+          <a
+            class="nav-link"
+            routerLink="/profile/overview"
+            routerLinkActive="active"
+            >Profile</a
+          >
         </li>
         <li *ngIf="!user" class="nav-item">
-          <a class="nav-link" routerLink="login">Login</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+            >Login</a
+          >
         </li>
         <li *ngIf="!user" class="nav-item">
-          <a class="nav-link" routerLink="register">Register</a>
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"
+            >Register</a
+          >
         </li>
         <li *ngIf="user" class="nav-item">
           <a class="nav-link" (click)="logout()">Logout</a>

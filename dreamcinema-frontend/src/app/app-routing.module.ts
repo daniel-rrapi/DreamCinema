@@ -31,8 +31,9 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
+      { path: '', component: OverviewProfileComponent },
       {
         path: 'overview',
         component: OverviewProfileComponent,
