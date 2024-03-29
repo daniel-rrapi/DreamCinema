@@ -1,5 +1,6 @@
 export interface Dates {
   name: string;
+  weekday: string;
   date: DateNumbers;
 }
 export interface DateNumbers {

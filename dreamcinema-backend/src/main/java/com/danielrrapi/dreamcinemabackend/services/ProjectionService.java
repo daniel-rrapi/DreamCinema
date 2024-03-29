@@ -52,7 +52,7 @@ public class ProjectionService {
         LocalDate localDate = LocalDate.of(year, month, dayOfMonth);
         Day date = dayService.findDayByDate(localDate);
         Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
-        return projectionDAO.findProjectionsByMovieId(pageable, movieService.findMovieById(id));
+        return projectionDAO.findProjectionsByMovieIdAndDay(pageable, movieService.findMovieById(id), date);
     }
 
     public Projection save(NewProjectionDTO payload) {

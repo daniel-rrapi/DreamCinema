@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Projection, ProjectionPaged } from '../interfaces/projection';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -41,20 +41,34 @@ export class ProjectionService {
     year: number,
     movieId: string
   ) {
-    return this.http.get<ProjectionPaged>(
-      this.apiUrl +
-        '/projections/movies/days/' +
-        movieId +
-        '?day=' +
-        day +
-        '&month=' +
-        month +
-        '&year=' +
-        year
-    );
+    return this.http
+      .get<ProjectionPaged>(
+        this.apiUrl +
+          '/projections/movies/days/' +
+          movieId +
+          '?day=' +
+          day +
+          '&month=' +
+          month +
+          '&year=' +
+          year
+      )
+      .pipe(catchError(this.handleError));
   }
 
   delete(id: string) {
     return this.http.delete(`${this.apiUrl}/projections/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
+    }
+
+    return throwError('Something bad happened; please try again later.');
   }
 }

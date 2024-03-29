@@ -14,11 +14,13 @@ export class DatesBookComponent implements OnInit {
   @Input() isSeatsPopUp!: boolean;
   @Output() changeSeatsBoolean = new EventEmitter<boolean>();
   dates: Dates[] = [];
+  currentDate!: Dates;
   currentMoviesByDay!: ProjectionPaged;
 
   constructor(private projectionsSrv: ProjectionService) {}
 
   onClick(date: Dates) {
+    this.currentDate = date;
     let day = date.date.date;
     let month = date.date.month + 1;
     let year = date.date.year;
@@ -39,38 +41,78 @@ export class DatesBookComponent implements OnInit {
     let month = moment().get('month');
     let year = moment().get('year');
     let today: DateNumbers = { date, month, year };
-    let todayObj: Dates = { name: 'today', date: today };
+    let weekday = moment().format('dddd');
+    let todayObj: Dates = { name: 'today', weekday: weekday, date: today };
     this.dates.push(todayObj);
-
-    // this.dates.push(today);
 
     date = moment().add(1, 'days').get('date');
     month = moment().add(1, 'days').get('month');
     year = moment().add(1, 'days').get('year');
+    weekday = moment().add(1, 'days').format('dddd');
+
     let tomorrow: DateNumbers = { date, month, year };
-    let tomorrowObj = { name: 'oneDayLater', date: tomorrow };
+    let tomorrowObj = { name: 'oneDayLater', weekday: weekday, date: tomorrow };
     this.dates.push(tomorrowObj);
 
     date = moment().add(2, 'days').get('date');
     month = moment().add(2, 'days').get('month');
     year = moment().add(2, 'days').get('year');
+    weekday = moment().add(2, 'days').format('dddd');
     let twoDaysLater: DateNumbers = { date, month, year };
-    let twoDaysLaterObj = { name: 'twoDaysLater', date: twoDaysLater };
+    let twoDaysLaterObj = {
+      name: 'twoDaysLater',
+      weekday: weekday,
+      date: twoDaysLater,
+    };
     this.dates.push(twoDaysLaterObj);
 
     date = moment().add(3, 'days').get('date');
     month = moment().add(3, 'days').get('month');
     year = moment().add(3, 'days').get('year');
+    weekday = moment().add(3, 'days').format('dddd');
     let threeDaysLater: DateNumbers = { date, month, year };
-    let threeDaysLaterObj = { name: 'threeDaysLater', date: threeDaysLater };
+    let threeDaysLaterObj = {
+      name: 'threeDaysLater',
+      weekday: weekday,
+      date: threeDaysLater,
+    };
     this.dates.push(threeDaysLaterObj);
 
     date = moment().add(4, 'days').get('date');
     month = moment().add(4, 'days').get('month');
     year = moment().add(4, 'days').get('year');
+    weekday = moment().add(4, 'days').format('dddd');
     let fourDaysLater: DateNumbers = { date, month, year };
-    let fourDaysLaterObj = { name: 'fourDaysLater', date: fourDaysLater };
+    let fourDaysLaterObj = {
+      name: 'fourDaysLater',
+      weekday: weekday,
+      date: fourDaysLater,
+    };
     this.dates.push(fourDaysLaterObj);
+
+    date = moment().add(5, 'days').get('date');
+    month = moment().add(5, 'days').get('month');
+    year = moment().add(5, 'days').get('year');
+    weekday = moment().add(5, 'days').format('dddd');
+    let fiveDaysLater: DateNumbers = { date, month, year };
+    let fiveDaysLaterObj = {
+      name: 'fiveDaysLater',
+      weekday: weekday,
+      date: fiveDaysLater,
+    };
+    this.dates.push(fiveDaysLaterObj);
+
+    date = moment().add(6, 'days').get('date');
+    month = moment().add(6, 'days').get('month');
+    year = moment().add(6, 'days').get('year');
+    weekday = moment().add(6, 'days').format('dddd');
+    let sixDaysLater: DateNumbers = { date, month, year };
+    let sixDaysLaterObj = {
+      name: 'sixDaysLater',
+      weekday: weekday,
+      date: sixDaysLater,
+    };
+    this.dates.push(sixDaysLaterObj);
 
     console.log(this.dates);
   }

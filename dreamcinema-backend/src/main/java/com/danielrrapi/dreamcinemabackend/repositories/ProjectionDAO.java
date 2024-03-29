@@ -18,6 +18,6 @@ public interface ProjectionDAO extends JpaRepository<Projection, UUID> {
     @Query("SELECT p FROM Projection p WHERE p.movie = :movieId")
     Page<Projection> findProjectionsByMovieId(Pageable pageable, @Param("movieId") Movie movie);
 
-    @Query("SELECT p FROM Projection p WHERE p.movie = :movieId AND p.day = :dayId")
-    Page<Projection> findProjectionsByMovieIdAndDay(Pageable pageable, @Param("movieId") Movie movie, @Param("dayId")Day day);
+    @Query("SELECT p FROM Projection p WHERE p.day = :dayId AND p.movie = :movieId")
+    Page<Projection> findProjectionsByMovieIdAndDay(Pageable pageable, @Param("movieId") Movie movie, @Param("dayId") Day day);
 }
