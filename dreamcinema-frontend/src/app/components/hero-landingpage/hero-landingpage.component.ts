@@ -14,6 +14,7 @@ export class HeroLandingpageComponent implements OnInit {
   time!: any;
   id!: string;
   link!: string;
+  isLoading = true;
 
   constructor(private movieSrv: MovieService) {}
 
@@ -26,6 +27,11 @@ export class HeroLandingpageComponent implements OnInit {
       this.time = data.content[0].duration;
       this.id = data.content[0].id;
       this.link = 'book/' + this.id;
+      this.isLoading = false;
     });
+  }
+
+  onImageLoad(event: any) {
+    event.target.classList.remove('placeholder');
   }
 }

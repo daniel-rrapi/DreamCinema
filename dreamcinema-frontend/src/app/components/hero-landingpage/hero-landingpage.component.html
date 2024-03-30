@@ -1,11 +1,21 @@
-<div class="position-relative">
-  <img [src]="bannerUrl" alt="" />
+<div class="position-relative placeholder-glow">
+  <img
+    [src]="bannerUrl"
+    class="placeholder bg-secondary"
+    (load)="onImageLoad($event)"
+  />
   <div
     class="position-absolute d-flex flex-column align-items-start gap-3 banner"
   >
-    <h1>{{ title }}</h1>
+    <h1 [class.placeholder]="isLoading" [class.col-12]="isLoading">
+      {{ title }}
+    </h1>
     <div class="d-flex gap-5">
-      <ul class="d-flex gap-1">
+      <ul
+        [class.placeholder]="isLoading"
+        [class.col-12]="isLoading"
+        class="d-flex gap-1"
+      >
         <li *ngFor="let genre of genres; last as isLast">
           {{ genre | titlecase }}<span *ngIf="!isLast">,</span>
         </li>
@@ -22,7 +32,9 @@
           <path
             d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
           /></svg
-        >{{ year }}
+        ><span [class.placeholder]="isLoading" [class.col-12]="isLoading">{{
+          year
+        }}</span>
       </p>
       <p>
         <svg
@@ -40,7 +52,9 @@
             d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
           />
         </svg>
-        {{ time | hourFormatter }}
+        <span [class.placeholder]="isLoading" [class.col-12]="isLoading">{{
+          time | hourFormatter
+        }}</span>
       </p>
     </div>
     <a class="btn btn-primary" routerLink="{{ link }}">Book Tickets</a>
