@@ -11,6 +11,7 @@ import { passwordsMatch } from 'src/app/validators/custom-validators';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  registerErrorMessage: string | null = null;
   registerForm = new FormGroup(
     {
       firstname: new FormControl('', [Validators.required]),
@@ -44,7 +45,10 @@ export class RegisterComponent implements OnInit {
         dob: dob,
       };
 
-      this.authSrv.register(formData).subscribe((res) => console.log(res));
+      this.authSrv.register(formData).subscribe(
+        (res) => console.log(res),
+        (err) => (this.registerErrorMessage = err.error.message)
+      );
     }
   }
 }

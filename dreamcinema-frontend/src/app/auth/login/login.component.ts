@@ -10,6 +10,7 @@ import { UserData } from 'src/app/interfaces/user-data';
 })
 export class LoginComponent implements OnInit {
   user!: UserData | null;
+  loginErrorMessage: string | null = null;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
           email: email,
           password: password,
         })
-        .subscribe((res) => console.log(res));
+        .subscribe(
+          (res) => console.log(res),
+          (err) => (this.loginErrorMessage = err.error.message)
+        );
   }
 }

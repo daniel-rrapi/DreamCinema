@@ -56,6 +56,16 @@
             formControlName="passwordConfirm"
             class="form-control"
           />
+          <div
+            class="text-danger"
+            *ngIf="
+              registerForm.errors &&
+              (registerForm.get('passwordConfirm')?.dirty ||
+                registerForm.get('passwordConfirm')?.touched)
+            "
+          >
+            Passwords doesn't match.
+          </div>
         </div>
 
         <div class="col col-12">
@@ -66,6 +76,10 @@
             formControlName="dob"
             class="form-control"
           />
+        </div>
+
+        <div class="col col-12 text-danger" *ngIf="registerErrorMessage">
+          {{ registerErrorMessage }}
         </div>
 
         <div class="col">

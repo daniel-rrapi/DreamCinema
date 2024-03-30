@@ -23,7 +23,9 @@ export class AuthService {
       tap(() => {
         this.router.navigate(['/login']);
       }),
-      catchError(this.handleError)
+      catchError((err) => {
+        return throwError(err);
+      })
     );
   }
 

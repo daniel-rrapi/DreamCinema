@@ -24,6 +24,9 @@
             class="form-control"
           />
         </div>
+        <div class="col text-danger" *ngIf="loginErrorMessage">
+          {{ loginErrorMessage }}
+        </div>
         <div class="col">
           <button
             type="submit"
