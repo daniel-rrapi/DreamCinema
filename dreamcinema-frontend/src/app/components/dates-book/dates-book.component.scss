@@ -21,6 +21,10 @@ li {
 }
 .hours {
   cursor: pointer;
+  background-color: var(--yellow);
+  display: inline;
+  color: black;
+  padding: 5px;
 }
 
 ul {

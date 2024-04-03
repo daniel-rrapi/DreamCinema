@@ -15,7 +15,7 @@ export class DatesBookComponent implements OnInit {
   @Output() changeSeatsBoolean = new EventEmitter<boolean>();
   dates: Dates[] = [];
   currentDate!: Dates;
-  currentMoviesByDay!: ProjectionPaged;
+  currentMoviesByDay!: ProjectionPaged | null;
 
   constructor(private projectionsSrv: ProjectionService) {}
 
@@ -26,7 +26,10 @@ export class DatesBookComponent implements OnInit {
     let year = date.date.year;
     this.projectionsSrv
       .getProjectionsByMovieIdAndDay(day, month, year, this.movie.id)
-      .subscribe((res) => (this.currentMoviesByDay = res));
+      .subscribe(
+        (res) => (this.currentMoviesByDay = res),
+        (err) => (this.currentMoviesByDay = null)
+      );
   }
   goToSeats(content: Projection) {
     this.isSeatsPopUp = true;

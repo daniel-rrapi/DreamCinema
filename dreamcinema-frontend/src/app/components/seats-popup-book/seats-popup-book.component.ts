@@ -74,6 +74,8 @@ export class SeatsPopupBookComponent implements OnInit, OnDestroy {
         this.ticketSrv
           .bookTicket(this.user.id, this.currentProjection.id, seatId)
           .subscribe((res) => {});
+
+        this.route.navigate(['/profile/tickets']);
       }
     }
   }
