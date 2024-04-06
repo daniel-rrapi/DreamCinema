@@ -1,0 +1,124 @@
+<section class="d-flex align-items-center">
+  <div
+    class="container rounded-4 px-5 py-5 d-flex align-items-center flex-column"
+  >
+    <h1>Create an account</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row row-gap-4">
+        <div class="col col-6">
+          <label for="firstname" class="form-label">Name:</label>
+          <input
+            id="firstname"
+            type="text"
+            formControlName="firstname"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="col col-6">
+          <label for="lastname" class="form-label">Surname:</label>
+          <input
+            type="text"
+            id="lastname"
+            formControlName="lastname"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col col-12">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col col-12">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col col-12">
+          <label for="passwordConfirm" class="form-label"
+            >Confirm password:</label
+          >
+          <input
+            type="password"
+            id="passwordConfirm"
+            formControlName="passwordConfirm"
+            class="form-control"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              registerForm.errors &&
+              (registerForm.get('passwordConfirm')?.dirty ||
+                registerForm.get('passwordConfirm')?.touched)
+            "
+          >
+            Passwords doesn't match.
+          </div>
+        </div>
+
+        <div class="col col-12">
+          <label for="dob" class="form-label">Date of birth:</label>
+          <input
+            type="date"
+            id="dob"
+            formControlName="dob"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col col-12 text-danger" *ngIf="registerErrorMessage">
+          {{ registerErrorMessage }}
+        </div>
+
+        <div class="col">
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn btn-primary rounded-pill w-100 mt-3"
+          >
+            <svg
+              class="me-2"
+              fill="#000000"
+              height="16px"
+              width="16px"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 330 330"
+              xml:space="preserve"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="XMLID_509_">
+                  <path
+                    id="XMLID_510_"
+                    d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85 S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M180,234.986V255c0,8.284-6.716,15-15,15 s-15-6.716-15-15v-20.014c-6.068-4.565-10-11.824-10-19.986c0-13.785,11.215-25,25-25s25,11.215,25,25 C190,223.162,186.068,230.421,180,234.986z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+            Sign up
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

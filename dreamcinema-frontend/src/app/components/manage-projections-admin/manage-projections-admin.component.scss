@@ -1,0 +1,15 @@
+.modify-projection {
+  width: 50vw;
+  height: 60vh;
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  top: 20%;
+  left: 25%;
+  border-radius: 20px;
+  color: black;
+}
+
+svg {
+  cursor: pointer;
+}

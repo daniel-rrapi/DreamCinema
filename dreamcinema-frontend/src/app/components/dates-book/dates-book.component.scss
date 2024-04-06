@@ -1,0 +1,32 @@
+img {
+  max-width: 100%;
+}
+.calendar {
+  background-color: #1d242a;
+}
+.selected p {
+  font-weight: 500;
+}
+.selected {
+  border-top: 1px solid var(--yellow);
+}
+li p {
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+li {
+  list-style-type: none;
+  cursor: pointer;
+  border-top: 1px solid transparent;
+}
+.hours {
+  cursor: pointer;
+  background-color: var(--yellow);
+  display: inline;
+  color: black;
+  padding: 5px;
+}
+
+ul {
+  padding: 0;
+}
