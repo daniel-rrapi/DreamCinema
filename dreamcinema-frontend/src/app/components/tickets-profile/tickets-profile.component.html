@@ -2,7 +2,7 @@
   <h1>Your tickets</h1>
   <div class="row row-cols-1 mt-6">
     <div
-      class="col d-flex gap-6 py-4 borderbottom"
+      class="col d-flex gap-6 py-4 flex-wrap justify-content-center justify-content-md-start borderbottom"
       *ngFor="let ticket of pagedTickets.content; first as isFirst"
       [ngClass]="{ bordertop: isFirst }"
     >

@@ -37,3 +37,16 @@ label {
 svg {
   cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+  .modify-movie {
+    width: 100vw;
+    height: 80vh;
+    position: fixed;
+    z-index: 5;
+    background-color: white;
+    top: 10%;
+    left: 0;
+    border-radius: 20px;
+    color: black;
+  }
+}
