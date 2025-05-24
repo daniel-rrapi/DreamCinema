@@ -15,6 +15,7 @@ export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
   isCreatingMode = false;
   currentMovie: Movie | null = null;
   form!: FormGroup;
+  genres: String[] | null = null;
 
   constructor(private movieSrv: MovieService, private popupSrv: PopupService) {
     movieSrv.getMovies(10).subscribe((res) => (this.movies = res));
@@ -23,7 +24,9 @@ export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
     this.popupSrv.setPopupState(false);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.movieSrv.getGenres().subscribe((res) => (this.genres = res));
+  }
 
   setCurrentMovie(movie: Movie) {
     this.currentMovie = movie;

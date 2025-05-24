@@ -152,18 +152,28 @@
           />
         </div>
 
-        <div class="col col-2">
+        <div class="col col-10">
           <label for="genres" class="form-label">Genres:</label>
-          <select
+          <!-- <select
             name="genres"
             id="genres"
             formControlName="genres"
-            class="form-control"
+            multiple
+            size="1"
           >
-            <option *ngFor="let genre of currentMovie?.genres">
+            <option value="" disabled selected>Select your option</option>
+            <option *ngFor="let genre of genres" [value]="genre">
               {{ genre }}
             </option>
-          </select>
+          </select> -->
+          <ng-select
+            [items]="genres"
+            bindLabel="name"
+            bindValue="id"
+            [multiple]="true"
+            placeholder="Select genres"
+          >
+          </ng-select>
         </div>
 
         <div class="col col-4 d-flex justify-content-between">

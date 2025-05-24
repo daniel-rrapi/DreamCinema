@@ -26,8 +26,9 @@ import { OverviewProfileComponent } from './views/profile/children/overview-prof
 import { TicketsProfileComponent } from './views/profile/children/tickets-profile/tickets-profile.component';
 import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profile.component';
 import { AdminPanelProfileComponent } from './views/profile/children/admin-panel-profile/admin-panel-profile.component';
-import { ManageMoviesAdminComponent } from './components/manage-movies-admin/manage-movies-admin.component';
-import { ManageProjectionsAdminComponent } from './components/manage-projections-admin/manage-projections-admin.component';
+import { ManageMoviesAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-movies-admin/manage-movies-admin.component';
+import { ManageProjectionsAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-projections-admin/manage-projections-admin.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ManageProjectionsAdminComponent } from './components/manage-projections
     ReactiveFormsModule,
     FormsModule,
     QRCodeModule,
+    NgSelectModule,
   ],
   providers: [
     {

@@ -20,6 +20,10 @@ export class MovieService {
     return this.http.get<Movie>(this.apiUrl + '/movies/' + id);
   }
 
+  getGenres() {
+    return this.http.get<String[]>(this.apiUrl + '/genres');
+  }
+
   saveMovie(movie?: Movie) {
     return this.http.post<Movie>(`${this.apiUrl}/movies`, movie);
   }
