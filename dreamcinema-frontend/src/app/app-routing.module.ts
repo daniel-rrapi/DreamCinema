@@ -6,9 +6,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AuthGuard } from './auth/auth.guard';
-import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
-import { TicketsProfileComponent } from './components/tickets-profile/tickets-profile.component';
-import { AdminPanelProfileComponent } from './components/admin-panel-profile/admin-panel-profile.component';
+import { OverviewProfileComponent } from './views/profile/children/overview-profile/overview-profile.component';
+import { TicketsProfileComponent } from './views/profile/children/tickets-profile/tickets-profile.component';
+import { AdminPanelProfileComponent } from './views/profile/children/admin-panel-profile/admin-panel-profile.component';
 import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [

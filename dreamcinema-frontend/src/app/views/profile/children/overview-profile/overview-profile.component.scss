@@ -1,0 +1,28 @@
+img {
+  width: 100px;
+  border-radius: 50%;
+}
+h4 {
+  margin: 0;
+}
+input:disabled {
+  border: transparent 0px solid;
+  background-color: transparent;
+  color: white;
+}
+p {
+  margin: 0;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #cbd5e1;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}

@@ -22,10 +22,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './views/profile/profile.component';
-import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
-import { TicketsProfileComponent } from './components/tickets-profile/tickets-profile.component';
+import { OverviewProfileComponent } from './views/profile/children/overview-profile/overview-profile.component';
+import { TicketsProfileComponent } from './views/profile/children/tickets-profile/tickets-profile.component';
 import { QrcodeProfileComponent } from './components/qrcode-profile/qrcode-profile.component';
-import { AdminPanelProfileComponent } from './components/admin-panel-profile/admin-panel-profile.component';
+import { AdminPanelProfileComponent } from './views/profile/children/admin-panel-profile/admin-panel-profile.component';
 import { ManageMoviesAdminComponent } from './components/manage-movies-admin/manage-movies-admin.component';
 import { ManageProjectionsAdminComponent } from './components/manage-projections-admin/manage-projections-admin.component';
 

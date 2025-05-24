@@ -1,9 +1,16 @@
 <section class="container-fluid mt-5">
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col col-12 col-md-4">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-4">
-          <img [src]="user?.profilePic" alt="" />
+          <div *ngIf="user?.profilePic; else displayAvatar">
+            <img [src]="user?.profilePic" alt="" />
+          </div>
+          <ng-template #displayAvatar>
+            <div class="avatar">
+              <p>{{ user?.name?.charAt(0) }}</p>
+            </div>
+          </ng-template>
           <h4>{{ user?.name }} {{ user?.surname }}</h4>
         </div>
 
@@ -66,10 +73,13 @@
       </div>
       <ng-template #displaySaveButton>
         <div class="d-flex gap-3">
-          <button class="btn btn-outline-primary" (click)="saveChanges()">
+          <button class="btn btn-primary rounded-pill" (click)="saveChanges()">
             Save
           </button>
-          <button class="btn btn-outline-danger" (click)="cancelChanges()">
+          <button
+            class="btn btn-outline-danger rounded-pill"
+            (click)="cancelChanges()"
+          >
             Cancel
           </button>
         </div>
