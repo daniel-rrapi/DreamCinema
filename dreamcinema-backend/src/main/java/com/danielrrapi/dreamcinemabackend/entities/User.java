@@ -53,7 +53,6 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.dob = dob;
-        this.profilePic = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
         this.roleType = RoleType.USER;
     }
 
