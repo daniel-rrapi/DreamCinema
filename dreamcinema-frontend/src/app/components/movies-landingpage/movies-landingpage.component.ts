@@ -3,9 +3,10 @@ import { Movie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-movies-landingpage',
-  templateUrl: './movies-landingpage.component.html',
-  styleUrls: ['./movies-landingpage.component.scss'],
+    selector: 'app-movies-landingpage',
+    templateUrl: './movies-landingpage.component.html',
+    styleUrls: ['./movies-landingpage.component.scss'],
+    standalone: false
 })
 export class MoviesLandingpageComponent implements OnInit {
   constructor(private movieSrv: MovieService) {}

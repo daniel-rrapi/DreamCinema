@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-hero-landingpage',
-  templateUrl: './hero-landingpage.component.html',
-  styleUrls: ['./hero-landingpage.component.scss'],
+    selector: 'app-hero-landingpage',
+    templateUrl: './hero-landingpage.component.html',
+    styleUrls: ['./hero-landingpage.component.scss'],
+    standalone: false
 })
 export class HeroLandingpageComponent implements OnInit {
   bannerUrl: string = '../../../assets/imgs/black_background.png';

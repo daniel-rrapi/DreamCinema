@@ -6,9 +6,10 @@ import { UserData } from 'src/app/interfaces/user-data';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-overview-profile',
-  templateUrl: './overview-profile.component.html',
-  styleUrls: ['./overview-profile.component.scss'],
+    selector: 'app-overview-profile',
+    templateUrl: './overview-profile.component.html',
+    styleUrls: ['./overview-profile.component.scss'],
+    standalone: false
 })
 export class OverviewProfileComponent implements OnInit {
   user!: UserData | null;

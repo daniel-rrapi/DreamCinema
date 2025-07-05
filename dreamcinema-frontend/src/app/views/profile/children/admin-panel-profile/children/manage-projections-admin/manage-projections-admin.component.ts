@@ -9,9 +9,10 @@ import { PopupService } from 'src/app/services/popup.service';
 import { ProjectionService } from 'src/app/services/projection.service';
 
 @Component({
-  selector: 'app-manage-projections-admin',
-  templateUrl: './manage-projections-admin.component.html',
-  styleUrls: ['./manage-projections-admin.component.scss'],
+    selector: 'app-manage-projections-admin',
+    templateUrl: './manage-projections-admin.component.html',
+    styleUrls: ['./manage-projections-admin.component.scss'],
+    standalone: false
 })
 export class ManageProjectionsAdminComponent implements OnInit, OnDestroy {
   projections!: ProjectionPaged;

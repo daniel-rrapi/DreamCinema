@@ -4,9 +4,10 @@ import { MovieRoomService } from 'src/app/services/movie-room.service';
 import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
-  selector: 'app-manage-rooms-admin',
-  templateUrl: './manage-rooms-admin.component.html',
-  styleUrls: ['./manage-rooms-admin.component.scss'],
+    selector: 'app-manage-rooms-admin',
+    templateUrl: './manage-rooms-admin.component.html',
+    styleUrls: ['./manage-rooms-admin.component.scss'],
+    standalone: false
 })
 export class ManageRoomsAdminComponent implements OnInit {
   isModifyMode = false;

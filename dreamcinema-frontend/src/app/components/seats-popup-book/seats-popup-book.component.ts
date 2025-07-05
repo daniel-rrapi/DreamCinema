@@ -15,9 +15,10 @@ import { SeatService } from 'src/app/services/seat.service';
 import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
-  selector: 'app-seats-popup-book',
-  templateUrl: './seats-popup-book.component.html',
-  styleUrls: ['./seats-popup-book.component.scss'],
+    selector: 'app-seats-popup-book',
+    templateUrl: './seats-popup-book.component.html',
+    styleUrls: ['./seats-popup-book.component.scss'],
+    standalone: false
 })
 export class SeatsPopupBookComponent implements OnInit, OnDestroy {
   @Output() changeSeatsBoolean = new EventEmitter<boolean>();

@@ -5,9 +5,10 @@ import { MovieService } from 'src/app/services/movie.service';
 import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
-  selector: 'app-manage-movies-admin',
-  templateUrl: './manage-movies-admin.component.html',
-  styleUrls: ['./manage-movies-admin.component.scss'],
+    selector: 'app-manage-movies-admin',
+    templateUrl: './manage-movies-admin.component.html',
+    styleUrls: ['./manage-movies-admin.component.scss'],
+    standalone: false
 })
 export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
   movies!: MoviePaged;

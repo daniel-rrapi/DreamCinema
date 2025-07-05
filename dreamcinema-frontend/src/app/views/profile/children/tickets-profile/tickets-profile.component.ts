@@ -4,9 +4,10 @@ import { PopupService } from 'src/app/services/popup.service';
 import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
-  selector: 'app-tickets-profile',
-  templateUrl: './tickets-profile.component.html',
-  styleUrls: ['./tickets-profile.component.scss'],
+    selector: 'app-tickets-profile',
+    templateUrl: './tickets-profile.component.html',
+    styleUrls: ['./tickets-profile.component.scss'],
+    standalone: false
 })
 export class TicketsProfileComponent implements OnInit, OnDestroy {
   pagedTickets!: TicketPaged;

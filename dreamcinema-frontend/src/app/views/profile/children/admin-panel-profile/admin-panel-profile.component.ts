@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-admin-panel-profile',
-  templateUrl: './admin-panel-profile.component.html',
-  styleUrls: ['./admin-panel-profile.component.scss'],
+    selector: 'app-admin-panel-profile',
+    templateUrl: './admin-panel-profile.component.html',
+    styleUrls: ['./admin-panel-profile.component.scss'],
+    standalone: false
 })
 export class AdminPanelProfileComponent implements OnInit {
   isManageMovies = true;

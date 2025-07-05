@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ticket } from 'src/app/interfaces/ticket';
 
 @Component({
-  selector: 'app-qrcode-profile',
-  templateUrl: './qrcode-profile.component.html',
-  styleUrls: ['./qrcode-profile.component.scss'],
+    selector: 'app-qrcode-profile',
+    templateUrl: './qrcode-profile.component.html',
+    styleUrls: ['./qrcode-profile.component.scss'],
+    standalone: false
 })
 export class QrcodeProfileComponent implements OnInit {
   @Input() ticket!: Ticket;

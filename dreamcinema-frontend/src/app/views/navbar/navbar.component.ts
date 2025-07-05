@@ -4,9 +4,10 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { UserData } from 'src/app/interfaces/user-data';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    standalone: false
 })
 export class NavbarComponent implements OnInit {
   user!: UserData | null;

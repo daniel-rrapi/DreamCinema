@@ -8,9 +8,10 @@ import { UserData } from 'src/app/interfaces/user-data';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss'],
+    selector: 'app-book',
+    templateUrl: './book.component.html',
+    styleUrls: ['./book.component.scss'],
+    standalone: false
 })
 export class BookComponent implements OnInit {
   movie!: Movie;

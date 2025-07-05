@@ -4,9 +4,10 @@ import { UserData } from 'src/app/interfaces/user-data';
 import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    standalone: false
 })
 export class ProfileComponent implements OnInit {
   user!: UserData | null;

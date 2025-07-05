@@ -5,9 +5,10 @@ import { Projection, ProjectionPaged } from 'src/app/interfaces/projection';
 import { ProjectionService } from 'src/app/services/projection.service';
 
 @Component({
-  selector: 'app-dates-book',
-  templateUrl: './dates-book.component.html',
-  styleUrls: ['./dates-book.component.scss'],
+    selector: 'app-dates-book',
+    templateUrl: './dates-book.component.html',
+    styleUrls: ['./dates-book.component.scss'],
+    standalone: false
 })
 export class DatesBookComponent implements OnInit {
   @Input() movie!: Movie;

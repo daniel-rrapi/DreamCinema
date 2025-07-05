@@ -4,9 +4,10 @@ import { AuthService } from '../auth.service';
 import { UserData } from 'src/app/interfaces/user-data';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
   user!: UserData | null;
