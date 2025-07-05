@@ -67,9 +67,62 @@ $spacers: (
     (
       $spacer * 9.375,
     )
-    //150px,,,,,,,,,,
+    //150px,,,,,,,,,,,,,,,
 );
 
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+// Custom.scss
 
-// Then add additional custom code here
+@use "bootstrap/scss/bootstrap" with (
+  // Sposta tutte le tue variabili personalizzate QUI DENTRO
+  $yellow: #fee505,
+  $primary: #fee505,
+  // Ho usato il valore diretto, puoi mantenere $yellow se lo definisci prima
+  $info: #fff178,
+
+  $navbar-light-color: white,
+  $navbar-light-hover-color: rgb(233, 233, 233),
+  $navbar-light-active-color: #fee505,
+
+  $container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1500px
+  ),
+
+  $spacer: 1rem,
+  // Rimuovi !default quando sei dentro a `with`
+  $spacers:
+    (
+      0: 0,
+      1: (
+        $spacer * 0.25,
+      ),
+      2: (
+        $spacer * 0.5,
+      ),
+      3: $spacer,
+      4: (
+        $spacer * 1.5,
+      ),
+      5: (
+        $spacer * 3,
+      ),
+      6: (
+        $spacer * 4,
+      ),
+      7: (
+        $spacer * 5,
+      ),
+      8: (
+        $spacer * 6.25,
+      ),
+      9: (
+        $spacer * 7.5,
+      ),
+      10: (
+        $spacer * 9.375,
+      )
+    )
+);
