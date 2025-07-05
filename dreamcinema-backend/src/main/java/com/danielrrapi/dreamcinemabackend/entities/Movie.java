@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "movies")
-public class Movie {
+public class                        Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

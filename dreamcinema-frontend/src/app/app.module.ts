@@ -29,6 +29,7 @@ import { AdminPanelProfileComponent } from './views/profile/children/admin-panel
 import { ManageMoviesAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-movies-admin/manage-movies-admin.component';
 import { ManageProjectionsAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-projections-admin/manage-projections-admin.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ManageRoomsAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-rooms-admin/manage-rooms-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AdminPanelProfileComponent,
     ManageMoviesAdminComponent,
     ManageProjectionsAdminComponent,
+    ManageRoomsAdminComponent,
   ],
   imports: [
     BrowserModule,

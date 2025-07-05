@@ -63,7 +63,7 @@ export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
       duration: new FormControl('', Validators.required),
       posterUrl: new FormControl('', Validators.required),
       bannerUrl: new FormControl('', Validators.required),
-      genres: new FormControl('', Validators.required),
+      genres: new FormControl([], Validators.required),
     });
   }
 
@@ -95,6 +95,10 @@ export class ManageMoviesAdminComponent implements OnInit, OnDestroy {
       };
       this.movieSrv.saveMovie(newMovie).subscribe();
       this.closeWindow();
+      console.log(
+        "this.form.get('genres')?.value",
+        this.form.get('genres')?.value
+      );
     } else if (this.isModifyMode || this.currentMovie) {
       let modifiedMovie: Movie = {
         id: this.currentMovie!.id,

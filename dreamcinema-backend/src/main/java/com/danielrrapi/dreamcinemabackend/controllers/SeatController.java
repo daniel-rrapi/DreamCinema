@@ -21,13 +21,13 @@ public class SeatController {
         return seatService.findAllSeats(pageNumber, size, orderBy);
     }
 
-    @GetMapping("/projections/{id}")
-    public Page<Seat> getSeatsByProjectionId(@RequestParam(defaultValue = "0") int pageNumber,
-                                             @RequestParam(defaultValue = "50") int size,
-                                             @RequestParam(defaultValue = "number") String orderBy,
-                                             @PathVariable String id) {
-        return seatService.findSeatsByProjectionId(pageNumber, size, orderBy, id);
-    }
+//    @GetMapping("/projections/{id}")
+//    public Page<Seat> getSeatsByProjectionId(@RequestParam(defaultValue = "0") int pageNumber,
+//                                             @RequestParam(defaultValue = "50") int size,
+//                                             @RequestParam(defaultValue = "number") String orderBy,
+//                                             @PathVariable String id) {
+//        return seatService.findSeatsByProjectionId(pageNumber, size, orderBy, id);
+//    }
 
 //    @GetMapping("/{id}")
 //    public Seat getSeatById(@PathVariable String id) {

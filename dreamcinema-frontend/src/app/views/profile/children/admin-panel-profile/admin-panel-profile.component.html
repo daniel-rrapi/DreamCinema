@@ -12,6 +12,10 @@
         >
           MANAGE PROJECTIONS
         </li>
+        <hr />
+        <li (click)="manage('rooms')" [class.selected]="isManageRooms">
+          MANAGE ROOMS
+        </li>
       </ul>
     </div>
     <div class="col col-12 col-md-10 p-0">
@@ -19,6 +23,7 @@
       <app-manage-projections-admin
         *ngIf="isManageProjections"
       ></app-manage-projections-admin>
+      <app-manage-rooms-admin *ngIf="isManageRooms"></app-manage-rooms-admin>
     </div>
   </div>
 </div>

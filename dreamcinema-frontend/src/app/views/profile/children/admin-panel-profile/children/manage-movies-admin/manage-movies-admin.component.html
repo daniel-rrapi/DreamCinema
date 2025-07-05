@@ -154,24 +154,13 @@
 
         <div class="col col-10">
           <label for="genres" class="form-label">Genres:</label>
-          <!-- <select
-            name="genres"
-            id="genres"
-            formControlName="genres"
-            multiple
-            size="1"
-          >
-            <option value="" disabled selected>Select your option</option>
-            <option *ngFor="let genre of genres" [value]="genre">
-              {{ genre }}
-            </option>
-          </select> -->
           <ng-select
             [items]="genres"
             bindLabel="name"
             bindValue="id"
             [multiple]="true"
             placeholder="Select genres"
+            formControlName="genres"
           >
           </ng-select>
         </div>

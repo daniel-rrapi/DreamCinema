@@ -1,5 +1,7 @@
 package com.danielrrapi.dreamcinemabackend.services;
 
+import com.danielrrapi.dreamcinemabackend.entities.Movie;
+import com.danielrrapi.dreamcinemabackend.entities.MovieRoom;
 import com.danielrrapi.dreamcinemabackend.entities.Projection;
 import com.danielrrapi.dreamcinemabackend.entities.Seat;
 import com.danielrrapi.dreamcinemabackend.exceptions.NotFoundExcpetion;
@@ -19,7 +21,7 @@ public class SeatService {
     @Autowired
     private SeatDAO seatDAO;
     @Autowired
-    private ProjectionService projectionService;
+    private MovieRoomService movieRoomService;
 
     public Page<Seat> findAllSeats(int pageNumber, int size, String orderBy) {
         if(size > 100) size = 100;
@@ -27,11 +29,11 @@ public class SeatService {
         return seatDAO.findAll(pageable);
     }
 
-    public Page<Seat> findSeatsByProjectionId(int pageNumber, int size, String orderBy, String projectionId) {
-        if (size > 100) size = 100;
-        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
-        return seatDAO.findSeatsByProjection(pageable, projectionService.findProjectionById(projectionId));
-    }
+//    public Page<Seat> findSeatsByProjectionId(int pageNumber, int size, String orderBy, String projectionId) {
+//        if (size > 100) size = 100;
+//        Pageable pageable = PageRequest.of(pageNumber, size, Sort.by(orderBy));
+//        return seatDAO.findSeatsByProjection(pageable, projectionService.findProjectionById(projectionId));
+//    }
 
     public Seat findSeatById(String id) {
         return seatDAO.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundExcpetion("Seat with id: " + id + " not found"));
@@ -44,8 +46,8 @@ public class SeatService {
     }
 
     public  Seat save(NewSeatDTO payload) {
-        Projection projection = projectionService.findProjectionById(payload.projectionId());
-        Seat newSeat = new Seat(payload.number(), payload.isBooked(), projection);
+        MovieRoom movieRoom = movieRoomService.findMovieRoomById(payload.movieRoomId());
+        Seat newSeat = new Seat(payload.number(), payload.isBooked(), movieRoom);
         return seatDAO.save(newSeat);
 
     }
