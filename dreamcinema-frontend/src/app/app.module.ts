@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,48 +31,41 @@ import { ManageProjectionsAdminComponent } from './views/profile/children/admin-
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ManageRoomsAdminComponent } from './views/profile/children/admin-panel-profile/children/manage-rooms-admin/manage-rooms-admin.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LandingpageComponent,
-    NavbarComponent,
-    HeroLandingpageComponent,
-
-    MoviesLandingpageComponent,
-    MovieCardComponent,
-    HourFormatterPipe,
-    BookComponent,
-    BannerBookComponent,
-    DatesBookComponent,
-    NumberToMonthPipe,
-    SeatsPopupBookComponent,
-    RegisterComponent,
-    LoginComponent,
-    ProfileComponent,
-    OverviewProfileComponent,
-    TicketsProfileComponent,
-    QrcodeProfileComponent,
-    AdminPanelProfileComponent,
-    ManageMoviesAdminComponent,
-    ManageProjectionsAdminComponent,
-    ManageRoomsAdminComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    QRCodeModule,
-    NgSelectModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LandingpageComponent,
+        NavbarComponent,
+        HeroLandingpageComponent,
+        MoviesLandingpageComponent,
+        MovieCardComponent,
+        HourFormatterPipe,
+        BookComponent,
+        BannerBookComponent,
+        DatesBookComponent,
+        NumberToMonthPipe,
+        SeatsPopupBookComponent,
+        RegisterComponent,
+        LoginComponent,
+        ProfileComponent,
+        OverviewProfileComponent,
+        TicketsProfileComponent,
+        QrcodeProfileComponent,
+        AdminPanelProfileComponent,
+        ManageMoviesAdminComponent,
+        ManageProjectionsAdminComponent,
+        ManageRoomsAdminComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        QRCodeModule,
+        NgSelectModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
